@@ -18,6 +18,53 @@ import CookieBanner from '../components/CookieBanner.astro';
     <Hero />
 
     <div class="lower">
+      <!-- ÜBER MICH (toggle via + im Hero) -->
+      <section
+        id="about-section"
+        class="about-section"
+        aria-labelledby="about-heading"
+        data-state="closed"
+      >
+        <div class="about-head">
+          <span class="about-eyebrow-line"></span>
+          <span class="about-eyebrow" id="about-heading">Über mich</span>
+          <span class="about-eyebrow-line"></span>
+        </div>
+        <div class="about-terminal" role="region" aria-label="Biografie">
+          <div class="about-terminal-prompt" aria-hidden="true">
+            <span class="about-prompt-glyph">$</span>
+            <span class="about-prompt-cmd">cat ./about-me.txt</span>
+          </div>
+          <p
+            class="about-line"
+            data-text-de="Servus, ich bin René Wild — stolzer Papa, professioneller Nachwuchs-Eishockey-Trainer und Development Coach. Wild Project ist mein Zuhause, die Plattform, von der alles ausgeht: Eines nach dem anderen, jedes mit eigener Handschrift."
+            data-text-en="Hey, I'm René Wild — proud dad, professional junior hockey coach and development coach. Wild Project is my home base — the platform where it all starts: one project at a time, each with its own signature."
+          ></p>
+          <p
+            class="about-line"
+            data-text-de="Eishockey prägt einen großen Teil meines Lebens. Nicht nur, weil ich fast täglich am Eis stehe — sondern weil ich den Sport liebe. Das Spiel, die Menschen, die Geschichten, der Lifestyle drumherum."
+            data-text-en="Hockey runs through a big part of my life. Not just because I'm on the ice almost every day — but because I love the sport. The game, the people, the stories, the lifestyle around it."
+          ></p>
+          <p
+            class="about-line"
+            data-text-de="Genau zwischen Eishalle und Leben verwirkliche ich meine Ideen — Schritt für Schritt, kein Masterplan."
+            data-text-en="Right between the rink and real life is where I bring my ideas to life — step by step, no master plan."
+          ></p>
+          <p
+            class="about-line about-line--cta"
+            data-text-de="Bin immer offen für spannende Collaborations oder einen Austausch über neue Projekte — schreib mir einfach."
+            data-text-en="Always open to exciting collaborations or a chat about new projects — just hit me up."
+          ></p>
+        </div>
+        <div class="about-close-wrap">
+          <button
+            type="button"
+            class="about-close"
+            aria-label="Über mich schließen"
+          ><span class="about-close-glyph" aria-hidden="true">−</span></button>
+        </div>
+      </section>
+
       <!-- PROJEKTE -->
       <section class="projects-section">
         <div class="projects-head">
@@ -100,9 +147,171 @@ import CookieBanner from '../components/CookieBanner.astro';
     width: 100%;
   }
 
+  /* ── ÜBER MICH SECTION (collapsible) ──────── */
+  .about-section {
+    margin-top: 0;
+    text-align: center;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.7s cubic-bezier(.5,.1,.2,1),
+      opacity 0.5s ease,
+      margin-top 0.6s cubic-bezier(.5,.1,.2,1);
+  }
+  .about-section[data-state="open"] {
+    max-height: 1800px;
+    opacity: 1;
+    margin-top: 80px;
+  }
+  .about-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .about-eyebrow-line {
+    width: 40px;
+    height: 1px;
+    background: var(--orange);
+    opacity: 0.8;
+  }
+  .about-eyebrow {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 500;
+  }
+  .about-terminal {
+    margin: 6px auto 0;
+    max-width: 540px;
+    text-align: left;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.72);
+    padding: 18px 22px 20px;
+    background: rgba(255,255,255,0.018);
+    border-left: 1px solid rgba(252,80,0,0.45);
+  }
+  .about-terminal-prompt {
+    font-size: 10.5px;
+    letter-spacing: 1.2px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .about-prompt-glyph {
+    color: var(--orange);
+    margin-right: 8px;
+    font-weight: 600;
+  }
+  .about-prompt-cmd {
+    color: rgba(255,255,255,0.45);
+  }
+  .about-line {
+    margin: 0 0 14px;
+    min-height: 1.75em;
+    font-weight: 300;
+    color: rgba(255,255,255,0.78);
+    white-space: pre-wrap;
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+  .about-line:last-child {
+    margin-bottom: 0;
+  }
+  .about-line--cta {
+    margin-top: 8px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(252,80,0,0.18);
+    color: rgba(255,255,255,0.85);
+  }
+  :global(body.light) .about-line--cta {
+    color: rgba(0,0,0,0.78);
+    border-top-color: rgba(252,80,0,0.25);
+  }
+  .about-line--typing::after {
+    content: '▌';
+    display: inline-block;
+    margin-left: 1px;
+    color: var(--orange);
+    font-weight: 400;
+    animation: aboutCursorBlink 1s steps(2, start) infinite;
+  }
+  @keyframes aboutCursorBlink {
+    0%, 49%   { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+  .about-close-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 26px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.5,.1,.2,1);
+  }
+  .about-section[data-state="open"] .about-close-wrap {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+  }
+  .about-close {
+    appearance: none;
+    background: transparent;
+    border: 1px solid rgba(252,80,0,0.4);
+    color: var(--orange);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    position: relative;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s cubic-bezier(.5,.1,.2,1);
+  }
+  .about-close::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 50%;
+    border: 1px solid rgba(252,80,0,0.35);
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.4s ease, transform 0.6s cubic-bezier(.5,.1,.2,1);
+    pointer-events: none;
+  }
+  .about-close:hover {
+    background: rgba(252,80,0,0.14);
+    border-color: var(--orange);
+    transform: rotate(180deg);
+  }
+  .about-close:hover::before {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  .about-close:focus-visible {
+    outline: 2px solid rgba(252,80,0,0.55);
+    outline-offset: 3px;
+  }
+  .about-close-glyph {
+    display: inline-block;
+    transform: translateY(-1px);
+  }
+
   /* ── PROJEKTE SECTION ────────────── */
   .projects-section {
-    margin-top: 80px;
+    margin-top: 64px;
     text-align: center;
   }
   .projects-head {
@@ -295,13 +504,35 @@ import CookieBanner from '../components/CookieBanner.astro';
   :global(body.light) .project-num { color: rgba(0,0,0,0.55); }
   :global(body.light) .project-title { color: #1a1a1a; }
   :global(body.light) .project-desc { color: rgba(0,0,0,0.6); }
+  :global(body.light) .about-terminal {
+    background: rgba(0,0,0,0.025);
+    border-left-color: rgba(252,80,0,0.55);
+    color: rgba(0,0,0,0.72);
+  }
+  :global(body.light) .about-terminal-prompt {
+    border-bottom-color: rgba(0,0,0,0.08);
+  }
+  :global(body.light) .about-prompt-cmd { color: rgba(0,0,0,0.5); }
+  :global(body.light) .about-line { color: rgba(0,0,0,0.72); }
+  :global(body.light) .about-close:hover {
+    background: rgba(252,80,0,0.10);
+  }
 
   /* ── RESPONSIVE ──────────────────── */
   @media (max-width: 700px) {
     .lower { padding: 0 1.25rem 40px; max-width: 100%; }
 
+    /* Über mich (mobile) */
+    .about-section[data-state="open"] { margin-top: 56px; max-height: 2400px; }
+    .about-head { margin-bottom: 16px; gap: 12px; }
+    .about-eyebrow-line { width: 24px; }
+    .about-eyebrow { font-size: 9px; letter-spacing: 2.5px; }
+    .about-terminal { padding: 14px 16px 16px; font-size: 11.5px; line-height: 1.7; }
+    .about-terminal-prompt { font-size: 9.5px; margin-bottom: 12px; padding-bottom: 10px; letter-spacing: 1px; }
+    .about-line { margin-bottom: 12px; }
+
     /* Projekte (mobile) */
-    .projects-section { margin-top: 56px; }
+    .projects-section { margin-top: 44px; }
     .projects-head { margin-bottom: 16px; gap: 12px; }
     .projects-eyebrow-line { width: 24px; }
     .projects-eyebrow { font-size: 9px; letter-spacing: 2.5px; }
@@ -317,4 +548,127 @@ import CookieBanner from '../components/CookieBanner.astro';
     .lower { padding: 0 1rem 36px; }
   }
 </style>
+
+<script>
+  // Toggle "Über mich" + Typewriter
+  const toggle = document.querySelector('.hero-bio-toggle');
+  const section = document.getElementById('about-section');
+  const lines = section ? Array.from(section.querySelectorAll('.about-line')) : [];
+
+  if (toggle && section && lines.length) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let isOpen = false;
+    let hasTyped = false;
+    let runId = 0;
+    let lang: 'de' | 'en' = 'de';
+    const langButtons = Array.from(
+      document.querySelectorAll<HTMLButtonElement>('.hero-lang-btn')
+    );
+
+    const getText = (line: HTMLElement) =>
+      (lang === 'en' ? line.dataset.textEn : line.dataset.textDe) || '';
+
+    const wait = (ms: number) => new Promise<void>((res) => setTimeout(res, ms));
+
+    const typeLine = (el: HTMLElement, text: string, speed: number, id: number) =>
+      new Promise<void>((resolve) => {
+        let i = 0;
+        const tick = () => {
+          if (id !== runId) { resolve(); return; }
+          i += 1;
+          el.textContent = text.slice(0, i);
+          if (i < text.length) {
+            const ch = text.charAt(i - 1);
+            const extra = /[\.\!\?]/.test(ch) ? 180 : /[,\—:;]/.test(ch) ? 80 : 0;
+            setTimeout(tick, speed + extra);
+          } else {
+            resolve();
+          }
+        };
+        tick();
+      });
+
+    const runTypewriter = async () => {
+      runId += 1;
+      const id = runId;
+      if (reducedMotion) {
+        lines.forEach((l) => { l.textContent = getText(l); });
+        return;
+      }
+      for (const line of lines) {
+        if (id !== runId) return;
+        line.classList.add('about-line--typing');
+        await typeLine(line, getText(line), 16, id);
+        line.classList.remove('about-line--typing');
+        await wait(220);
+      }
+    };
+
+    const setLang = (next: 'de' | 'en') => {
+      if (next === lang) return;
+      lang = next;
+      langButtons.forEach((btn) => {
+        const active = btn.dataset.lang === lang;
+        btn.classList.toggle('is-active', active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+      // bricht jeden laufenden Typewriter ab und blendet sofort den neuen Text ein
+      runId += 1;
+      lines.forEach((l) => {
+        l.classList.remove('about-line--typing');
+        l.textContent = getText(l);
+      });
+    };
+
+    langButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const next = (btn.dataset.lang === 'en' ? 'en' : 'de') as 'de' | 'en';
+        setLang(next);
+      });
+    });
+
+    const setOpen = (next: boolean) => {
+      if (next === isOpen) return;
+      isOpen = next;
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Über mich schließen' : 'Über mich öffnen');
+      section.dataset.state = isOpen ? 'open' : 'closed';
+
+      if (isOpen) {
+        setTimeout(() => {
+          const top = section.getBoundingClientRect().top + window.scrollY - 24;
+          window.scrollTo({ top, behavior: reducedMotion ? 'auto' : 'smooth' });
+        }, 80);
+        if (!hasTyped) {
+          hasTyped = true;
+          runTypewriter();
+        }
+      } else {
+        // Beim Schließen Fokus zurück zum Hero-Toggle, damit Keyboard-User wissen, wo sie sind
+        try { toggle.focus({ preventScroll: true }); } catch { toggle.focus(); }
+      }
+    };
+
+    toggle.addEventListener('click', () => setOpen(!isOpen));
+
+    // Minus-Kreis am Ende des Texts
+    const closeBtn = section.querySelector('.about-close');
+    closeBtn?.addEventListener('click', () => setOpen(false));
+
+    // ESC schließt
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) setOpen(false);
+    });
+
+    // Klick außerhalb der Sektion (und außerhalb des Toggles) schließt
+    document.addEventListener('click', (e: MouseEvent) => {
+      if (!isOpen) return;
+      const target = e.target as Node | null;
+      if (!target) return;
+      if (section.contains(target)) return;
+      if (toggle.contains(target)) return;
+      setOpen(false);
+    });
+  }
+</script>
 

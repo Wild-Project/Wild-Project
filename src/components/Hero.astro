@@ -1,5 +1,11 @@
 
 <div class="hero">
+  <div class="hero-lang-toggle" role="group" aria-label="Sprache wählen">
+    <button type="button" class="hero-lang-btn is-active" data-lang="de" aria-pressed="true">DE</button>
+    <span class="hero-lang-sep" aria-hidden="true">/</span>
+    <button type="button" class="hero-lang-btn" data-lang="en" aria-pressed="false">EN</button>
+  </div>
+
   <img src="/basecamp/brand/logos/wp-monogram-orange.png" alt="Wild Project" class="hero-logo" />
   <h1>
     <span class="hero-word-wild">WILD</span> <span class="hero-word-project">PROJECT</span>
@@ -18,20 +24,42 @@
   </div>
 
   <div class="hero-meta" aria-label="René Wild">
-    <div class="hero-meta-name">René Wild</div>
-    <a
-      class="hero-meta-link"
-      href="https://www.linkedin.com/in/ren%C3%A9-wild-95428b314"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="LinkedIn-Profil von René Wild"
-    >
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-      </svg>
-      <span>LinkedIn</span>
-      <span class="hero-meta-link-arrow" aria-hidden="true">→</span>
-    </a>
+    <div class="hero-meta-name">
+      <span class="hero-meta-name-row">
+        <span class="hero-meta-name-text">René Wild</span>
+        <button
+          type="button"
+          class="hero-bio-toggle"
+          aria-expanded="false"
+          aria-controls="about-section"
+          aria-label="Über mich öffnen"
+        ><span class="hero-bio-toggle-glyph" aria-hidden="true">+</span></button>
+      </span>
+    </div>
+    <div class="hero-meta-links">
+      <a
+        class="hero-meta-link"
+        href="https://www.linkedin.com/in/ren%C3%A9-wild-95428b314"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn-Profil von René Wild"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        </svg>
+      </a>
+      <a
+        class="hero-meta-link hero-meta-link--instagram"
+        href="https://www.instagram.com/wildprojects.pro/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram-Profil von Wild Project"
+      >
+        <svg viewBox="2 2 20 20" aria-hidden="true" focusable="false">
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M7 2a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5H7zm10.5 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0 2a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/>
+        </svg>
+      </a>
+    </div>
   </div>
 
   <div class="hero-divider" aria-hidden="true"><span></span></div>
@@ -48,6 +76,54 @@
     text-align: center;
     background: #F5F5F3;
     z-index: 1;
+  }
+  .hero-lang-toggle {
+    position: absolute;
+    top: 28px;
+    right: 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 4;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    opacity: 0;
+    transform: translateY(-4px);
+    animation: heroLangFade 0.8s cubic-bezier(.5,.1,.2,1) 0.5s forwards;
+  }
+  .hero-lang-btn {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    padding: 2px 3px;
+    cursor: pointer;
+    color: rgba(0,0,0,0.32);
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.22s ease;
+    user-select: none;
+    line-height: 1;
+  }
+  .hero-lang-btn:hover {
+    color: rgba(0,0,0,0.72);
+  }
+  .hero-lang-btn.is-active {
+    color: var(--orange);
+  }
+  .hero-lang-btn:focus-visible {
+    outline: 1px solid rgba(252,80,0,0.5);
+    outline-offset: 2px;
+  }
+  .hero-lang-sep {
+    color: rgba(0,0,0,0.2);
+    font-weight: 300;
+  }
+  @keyframes heroLangFade {
+    to { opacity: 1; transform: translateY(0); }
   }
   .hero-logo {
     width: 3cm;
@@ -118,20 +194,67 @@
   }
   .hero-meta-name {
     color: var(--orange);
-    font-size: 11px;
+    font-size: 12.5px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 2.8px;
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+  }
+  .hero-meta-name-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
   }
   .hero-meta-name::after {
     content: '';
     display: block;
-    width: 24px;
+    width: 32px;
     height: 1px;
     background: var(--orange);
-    opacity: 0.5;
-    margin-top: 5px;
+    opacity: 0.55;
+    margin-top: 0;
+  }
+  .hero-bio-toggle {
+    appearance: none;
+    background: transparent;
+    border: 1px solid rgba(252,80,0,0.4);
+    color: var(--orange);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    user-select: none;
+    margin-left: 2px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .hero-bio-toggle:hover {
+    background: rgba(252,80,0,0.12);
+    border-color: var(--orange);
+  }
+  .hero-bio-toggle:focus-visible {
+    outline: 2px solid rgba(252,80,0,0.55);
+    outline-offset: 2px;
+  }
+  .hero-bio-toggle[aria-expanded="true"] {
+    background: rgba(252,80,0,0.18);
+  }
+  .hero-bio-toggle-glyph {
+    display: inline-block;
+    transform: translateY(-0.5px);
   }
   .hero-meta-line {
     display: flex;
@@ -147,28 +270,49 @@
   .hero-meta-line .coord {
     color: rgba(0,0,0,0.45);
   }
+  .hero-meta-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+  }
   .hero-meta-link {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    margin-top: 14px;
-    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: rgba(0,0,0,0.65);
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    color: #00354F;
     text-decoration: none;
-    padding-bottom: 3px;
-    border-bottom: 1px solid rgba(0,0,0,0.15);
-    transition: color 0.2s ease, border-color 0.2s ease;
+    border-radius: 4px;
+    transition: transform 0.3s cubic-bezier(.5,.1,.2,1), opacity 0.25s ease;
+    opacity: 0.95;
+  }
+  .hero-meta-link:hover {
+    transform: translateY(-2px) scale(1.1);
+    opacity: 1;
+  }
+  .hero-meta-link:active {
+    transform: translateY(0) scale(1.04);
+    transition-duration: 0.12s;
+  }
+  .hero-meta-link:focus-visible {
+    outline: 2px solid rgba(252,80,0,0.45);
+    outline-offset: 3px;
   }
   .hero-meta-link svg {
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     flex-shrink: 0;
     color: #00354F;
-    transition: color 0.2s ease;
+  }
+  .hero-meta-link svg path {
+    fill: #00354F;
+    transition: fill 0.28s ease;
+  }
+  .hero-meta-link:hover svg path {
+    fill: var(--orange);
   }
   .hero-meta-link-arrow {
     display: inline-block;
@@ -324,6 +468,13 @@
       padding: 28vh 1.25rem 32px;
       min-height: 56vh;
     }
+    .hero-lang-toggle {
+      top: 18px;
+      right: 16px;
+      font-size: 9px;
+      letter-spacing: 1.3px;
+      gap: 4px;
+    }
     .hero h1 {
       letter-spacing: -1.5px;
       font-size: clamp(2.4rem, 11vw, 3.6rem);
@@ -353,25 +504,35 @@
       animation-name: heroMetaFadeMobile;
     }
     .hero-meta-name {
-      font-size: 10px;
-      letter-spacing: 2.2px;
-      margin-bottom: 6px;
+      font-size: 11.5px;
+      letter-spacing: 2.5px;
+      margin-bottom: 8px;
+      align-items: center;
     }
     .hero-meta-name::after {
-      margin: 5px auto 0;
+      margin: 0 auto;
+      width: 28px;
+    }
+    .hero-bio-toggle {
+      width: 19px;
+      height: 19px;
+      font-size: 12px;
     }
     .hero-meta-line {
       justify-content: center;
       gap: 8px;
     }
     .hero-meta-line .city { min-width: 0; }
-    .hero-meta-link {
+    .hero-meta-links {
       margin-top: 10px;
-      font-size: 9.5px;
-      letter-spacing: 1.3px;
-      gap: 6px;
+      justify-content: center;
+      gap: 14px;
     }
-    .hero-meta-link svg { width: 11px; height: 11px; }
+    .hero-meta-link {
+      width: 24px;
+      height: 24px;
+    }
+    .hero-meta-link svg { width: 15px; height: 15px; }
   }
   @keyframes heroMetaFadeMobile {
     to { opacity: 1; transform: translateY(0); }
