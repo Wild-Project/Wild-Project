@@ -234,6 +234,22 @@ import CookieBanner from '../components/CookieBanner.astro';
     color: rgba(0,0,0,0.78);
     border-top-color: rgba(252,80,0,0.25);
   }
+  :global(.about-cta-inline-link) {
+    color: var(--orange);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(252,80,0,0.4);
+    padding-bottom: 1px;
+    transition: border-color 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+  }
+  :global(.about-cta-inline-link:hover) {
+    color: var(--orange);
+    border-bottom-color: var(--orange);
+  }
+  :global(.about-cta-inline-link:focus-visible) {
+    outline: 1px dotted rgba(252,80,0,0.5);
+    outline-offset: 3px;
+  }
   .about-line--typing::after {
     content: '▌';
     display: inline-block;
@@ -568,6 +584,32 @@ import CookieBanner from '../components/CookieBanner.astro';
     const getText = (line: HTMLElement) =>
       (lang === 'en' ? line.dataset.textEn : line.dataset.textDe) || '';
 
+    const CTA_LINK_PHRASE: Record<'de' | 'en', string> = {
+      de: 'schreib mir einfach',
+      en: 'just hit me up',
+    };
+
+    const escapeHtml = (s: string) =>
+      s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+    const linkifyCta = () => {
+      const cta = section.querySelector<HTMLElement>('.about-line--cta');
+      if (!cta) return;
+      const phrase = CTA_LINK_PHRASE[lang];
+      const text = cta.textContent || '';
+      // Nur ersetzen, wenn der vollständige Phrase tatsächlich im (fertig getippten) Text steht
+      if (!text.includes(phrase)) return;
+      const idx = text.indexOf(phrase);
+      const before = escapeHtml(text.slice(0, idx));
+      const after = escapeHtml(text.slice(idx + phrase.length));
+      cta.innerHTML =
+        before +
+        '<a class="about-cta-inline-link" href="/kontakt">' +
+        escapeHtml(phrase) +
+        '</a>' +
+        after;
+    };
+
     const wait = (ms: number) => new Promise<void>((res) => setTimeout(res, ms));
 
     const typeLine = (el: HTMLElement, text: string, speed: number, id: number) =>
@@ -593,6 +635,7 @@ import CookieBanner from '../components/CookieBanner.astro';
       const id = runId;
       if (reducedMotion) {
         lines.forEach((l) => { l.textContent = getText(l); });
+        linkifyCta();
         return;
       }
       for (const line of lines) {
@@ -602,7 +645,12 @@ import CookieBanner from '../components/CookieBanner.astro';
         line.classList.remove('about-line--typing');
         await wait(220);
       }
+      if (id === runId) linkifyCta();
     };
+
+    const langTargets = Array.from(
+      section.querySelectorAll<HTMLElement>('[data-text-de]')
+    );
 
     const setLang = (next: 'de' | 'en') => {
       if (next === lang) return;
@@ -614,10 +662,11 @@ import CookieBanner from '../components/CookieBanner.astro';
       });
       // bricht jeden laufenden Typewriter ab und blendet sofort den neuen Text ein
       runId += 1;
-      lines.forEach((l) => {
-        l.classList.remove('about-line--typing');
-        l.textContent = getText(l);
+      langTargets.forEach((el) => {
+        el.classList.remove('about-line--typing');
+        el.textContent = getText(el);
       });
+      linkifyCta();
     };
 
     langButtons.forEach((btn) => {
