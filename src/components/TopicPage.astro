@@ -192,7 +192,10 @@ const areas = [
     display: flex; width: max-content;
     animation: tpStrip 70s linear infinite;
   }
-  :global(.tp-strip.is-paused .tp-strip-track) { animation-play-state: paused; }
+  :global(.tp-strip.is-js .tp-strip-track) { animation: none; will-change: transform; }
+  :global(.tp-strip.is-js) { cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  :global(.tp-strip.is-dragging) { cursor: grabbing; }
+  :global(.tp-strip img) { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
   :global(.tp-strip-dup) { display: flex; }
   :global(.tp-shot) { position: relative; flex: 0 0 auto; margin: 0 4px 0 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
   :global(.tp-shot img) {
@@ -215,7 +218,6 @@ const areas = [
   :global(.tp-shot.is-on img) { filter: none; }
   :global(.tp-shot.is-on::after) { opacity: 1; transform: none; }
   @media (hover: hover) {
-    :global(.tp-strip:hover .tp-strip-track) { animation-play-state: paused; }
     :global(.tp-shot:hover img) { filter: none; }
     :global(.tp-shot:hover::after) { opacity: 1; transform: none; }
   }
@@ -255,24 +257,91 @@ const areas = [
 </style>
 
 <script>
-  // Fotoleiste am Handy: Antippen färbt das Bild ein, zeigt den Fotocredit und hält die Leiste kurz an
+  // Fotoleiste: läuft von selbst, lässt sich mit Maus, Finger oder Trackpad schieben (mit Schwung)
   const strip = document.querySelector<HTMLElement>('.tp-strip');
-  if (strip && window.matchMedia('(hover: none)').matches) {
-    let t = 0;
-    const reset = () => {
-      strip.classList.remove('is-paused');
-      strip.querySelectorAll('.tp-shot.is-on').forEach((el) => el.classList.remove('is-on'));
+  const track = strip?.querySelector<HTMLElement>('.tp-strip-track');
+  if (strip && track) {
+    strip.classList.add('is-js');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let x = 0, half = 0, vel = 0, last = 0;
+    let dragging = false, hovering = false, holdUntil = 0;
+    let lastX = 0, lastT = 0, moved = 0, downX = 0;
+    const AUTO_SECONDS = 70;
+    const measure = () => { half = track.scrollWidth / 2; };
+    measure();
+    window.addEventListener('resize', measure);
+    track.querySelectorAll('img').forEach((img) => img.addEventListener('load', measure));
+
+    const wrap = () => {
+      if (!half) return;
+      while (x <= -half) x += half;
+      while (x > 0) x -= half;
     };
-    strip.addEventListener('click', (e) => {
-      const shot = (e.target as HTMLElement).closest<HTMLElement>('.tp-shot');
-      if (!shot) return;
-      const wasOn = shot.classList.contains('is-on');
-      clearTimeout(t);
-      reset();
-      if (wasOn) return;
-      shot.classList.add('is-on');
-      strip.classList.add('is-paused');
-      t = window.setTimeout(reset, 4000);
+    const frame = (t: number) => {
+      const dt = last ? Math.min(t - last, 50) : 16;
+      last = t;
+      if (!dragging) {
+        if (Math.abs(vel) > 0.02) {
+          x += vel * dt;
+          vel *= Math.pow(0.94, dt / 16);
+        } else {
+          vel = 0;
+          const paused = hovering || reduced || t < holdUntil;
+          if (!paused && half) x -= (half / (AUTO_SECONDS * 1000)) * dt;
+        }
+      }
+      wrap();
+      track.style.transform = `translate3d(${x}px,0,0)`;
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+
+    strip.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') hovering = true; });
+    strip.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') hovering = false; });
+
+    strip.addEventListener('pointerdown', (e) => {
+      dragging = true; vel = 0; moved = 0;
+      lastX = downX = e.clientX; lastT = performance.now();
+      strip.classList.add('is-dragging');
     });
+    window.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const now = performance.now();
+      const dx = e.clientX - lastX;
+      x += dx;
+      moved = Math.max(moved, Math.abs(e.clientX - downX));
+      const dt = Math.max(now - lastT, 1);
+      vel = vel * 0.6 + (dx / dt) * 0.4;
+      lastX = e.clientX; lastT = now;
+    });
+    const end = (e: PointerEvent) => {
+      if (!dragging) return;
+      dragging = false;
+      strip.classList.remove('is-dragging');
+      if (performance.now() - lastT > 80) vel = 0;
+      if (moved < 6) {
+        vel = 0;
+        // Antippen (Finger): Bild farbig + Credit, Leiste hält kurz an
+        if (e.pointerType !== 'mouse') {
+          const shot = (e.target as HTMLElement).closest<HTMLElement>('.tp-shot');
+          const wasOn = shot?.classList.contains('is-on');
+          strip.querySelectorAll('.tp-shot.is-on').forEach((el) => el.classList.remove('is-on'));
+          if (shot && !wasOn) { shot.classList.add('is-on'); holdUntil = performance.now() + 4000;
+            window.setTimeout(() => shot.classList.remove('is-on'), 4000); }
+          else holdUntil = 0;
+        }
+      }
+    };
+    window.addEventListener('pointerup', end);
+    window.addEventListener('pointercancel', end);
+
+    strip.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        e.preventDefault();
+        x -= e.deltaX;
+        vel = 0;
+        holdUntil = performance.now() + 1200;
+      }
+    }, { passive: false });
   }
 </script>
