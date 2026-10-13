@@ -49,7 +49,7 @@
     </div>
   </div>
 
-  <a class="bf-badge" href="/brands-friends/" aria-label="Brands &amp; Friends – Marken und Partner">
+  <a class="bf-badge" href="/brands-friends/" ontouchstart="" aria-label="Brands &amp; Friends – Marken und Partner">
     <svg class="bf-ring" viewBox="0 0 120 120" aria-hidden="true">
       <defs><path id="bf-circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" /></defs>
       <text><textPath href="#bf-circle" textLength="286" lengthAdjust="spacing">BRANDS × FRIENDS · BRANDS × FRIENDS · </textPath></text>
@@ -126,12 +126,18 @@
   .bf-x, .bf-go { position: absolute; transition: opacity 0.25s, transform 0.35s cubic-bezier(.34,1.56,.64,1); }
   .bf-x { font-size: 22px; line-height: 1; }
   .bf-go { font-size: 18px; line-height: 1; color: #FFFFFF; opacity: 0; transform: translate(-6px, 6px) scale(0.6); }
-  .bf-badge:hover::before, .bf-badge:focus-visible::before {
-    background: var(--orange); border-color: var(--orange); transform: scale(1);
+  /* Hover nur auf Geräten mit Maus – am Handy kein „hängender“ Hover-Zustand */
+  @media (hover: hover) {
+    .bf-badge:hover::before { background: var(--orange); border-color: var(--orange); transform: scale(1); }
+    .bf-badge:hover .bf-ring text { fill: #1a1a1a; }
+    .bf-badge:hover .bf-x { opacity: 0; transform: rotate(90deg) scale(0.5); }
+    .bf-badge:hover .bf-go { opacity: 1; transform: none; }
   }
-  .bf-badge:hover .bf-ring text, .bf-badge:focus-visible .bf-ring text { fill: #1a1a1a; }
-  .bf-badge:hover .bf-x, .bf-badge:focus-visible .bf-x { opacity: 0; transform: rotate(90deg) scale(0.5); }
-  .bf-badge:hover .bf-go, .bf-badge:focus-visible .bf-go { opacity: 1; transform: none; }
+  /* Tastatur + Antippen am Handy: kurzes Feedback nur solange gedrückt */
+  .bf-badge:focus-visible::before, .bf-badge:active::before { background: var(--orange); border-color: var(--orange); transform: scale(1); }
+  .bf-badge:focus-visible .bf-x, .bf-badge:active .bf-x { opacity: 0; transform: rotate(90deg) scale(0.5); }
+  .bf-badge:focus-visible .bf-go, .bf-badge:active .bf-go { opacity: 1; transform: none; }
+  .bf-badge { -webkit-tap-highlight-color: transparent; }
   .bf-badge:focus-visible { outline: 2px solid rgba(252,80,0,0.55); outline-offset: 4px; }
   @keyframes bfSpin { to { transform: rotate(360deg); } }
   @keyframes bfIn { from { opacity: 0; transform: scale(0.6) rotate(-40deg); } to { opacity: 1; transform: none; } }
