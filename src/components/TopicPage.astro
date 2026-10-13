@@ -192,16 +192,33 @@ const areas = [
     display: flex; width: max-content;
     animation: tpStrip 70s linear infinite;
   }
-  :global(.tp-strip:hover .tp-strip-track) { animation-play-state: paused; }
+  :global(.tp-strip.is-paused .tp-strip-track) { animation-play-state: paused; }
   :global(.tp-strip-dup) { display: flex; }
-  :global(.tp-strip img) {
-    display: block; height: 340px; width: auto; flex: 0 0 auto;
-    margin-right: 4px; object-fit: cover;
+  :global(.tp-shot) { position: relative; flex: 0 0 auto; margin: 0 4px 0 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  :global(.tp-shot img) {
+    display: block; height: 340px; width: auto; object-fit: cover;
     filter: grayscale(1) contrast(1.06);
     transition: filter 0.45s ease;
   }
-  :global(.tp-strip img:hover),
-  :global(.tp-strip img:active) { filter: none; }
+  :global(.tp-shot[data-credit]::after) {
+    content: attr(data-credit);
+    position: absolute; left: 10px; bottom: 10px;
+    padding: 5px 8px;
+    background: rgba(5,5,5,0.62);
+    color: #FFFFFF;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap;
+    opacity: 0; transform: translateY(4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+  :global(.tp-shot.is-on img) { filter: none; }
+  :global(.tp-shot.is-on::after) { opacity: 1; transform: none; }
+  @media (hover: hover) {
+    :global(.tp-strip:hover .tp-strip-track) { animation-play-state: paused; }
+    :global(.tp-shot:hover img) { filter: none; }
+    :global(.tp-shot:hover::after) { opacity: 1; transform: none; }
+  }
   @keyframes tpStrip { to { transform: translateX(-50%); } }
   @media (prefers-reduced-motion: reduce) {
     :global(.tp-strip) { overflow-x: auto; }
@@ -230,7 +247,32 @@ const areas = [
     :global(.tp-list li) { grid-template-columns: 1fr; gap: 4px; }
 
     :global(.tp-section) { margin-bottom: 48px; }
-    :global(.tp-strip img) { height: 220px; margin-right: 3px; }
+    :global(.tp-shot) { margin-right: 3px; }
+    :global(.tp-shot img) { height: 220px; }
+    :global(.tp-shot[data-credit]::after) { left: 6px; bottom: 6px; font-size: 8.5px; letter-spacing: 1px; padding: 4px 6px; }
     :global(.tp-strip-track) { animation-duration: 50s; }
   }
 </style>
+
+<script>
+  // Fotoleiste am Handy: Antippen färbt das Bild ein, zeigt den Fotocredit und hält die Leiste kurz an
+  const strip = document.querySelector<HTMLElement>('.tp-strip');
+  if (strip && window.matchMedia('(hover: none)').matches) {
+    let t = 0;
+    const reset = () => {
+      strip.classList.remove('is-paused');
+      strip.querySelectorAll('.tp-shot.is-on').forEach((el) => el.classList.remove('is-on'));
+    };
+    strip.addEventListener('click', (e) => {
+      const shot = (e.target as HTMLElement).closest<HTMLElement>('.tp-shot');
+      if (!shot) return;
+      const wasOn = shot.classList.contains('is-on');
+      clearTimeout(t);
+      reset();
+      if (wasOn) return;
+      shot.classList.add('is-on');
+      strip.classList.add('is-paused');
+      t = window.setTimeout(reset, 4000);
+    });
+  }
+</script>
