@@ -71,7 +71,7 @@
   /* ── CI als Gestaltungselement an der Seite ── */
   .hero::before {
     content: '';
-    position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+    position: absolute; left: 0; top: 0; bottom: 0; width: 10px;
     z-index: 3;
     background: linear-gradient(180deg, #FC5000 0 25%, #050505 25% 50%, #00354F 50% 75%, #E4E4E4 75% 100%);
     transform: scaleY(0); transform-origin: top;
@@ -115,7 +115,7 @@
   @media (max-width: 900px) {
     .ci-side { display: none; }
     .hero::before {
-      right: 0; bottom: auto; width: auto; height: 4px;
+      right: 0; bottom: auto; width: auto; height: 7px;
       background: linear-gradient(90deg, #FC5000 0 25%, #050505 25% 50%, #00354F 50% 75%, #E4E4E4 75% 100%);
       transform: scaleX(0); transform-origin: left;
       animation-name: ciBarX;
@@ -722,7 +722,7 @@
     }
   }
 
-  // Zitat: beim Hover (Desktop) bzw. Antippen (Handy) aufs Foto wird es in Mono getippt
+  // Zitat: tippt sich nach dem Intro einmal in Mono und bleibt dann stehen
   const profile = document.querySelector<HTMLElement>('.hero-profile');
   const quote = document.querySelector<HTMLElement>('.hero-quote');
   const qText = quote?.querySelector<HTMLElement>('.hq-text');
@@ -743,11 +743,12 @@
       }, 32);
     };
     const hide = () => { clearInterval(timer); quote.classList.remove('is-on'); };
-    if (window.matchMedia('(hover: hover)').matches) {
-      profile.addEventListener('mouseenter', show);
-      profile.addEventListener('mouseleave', hide);
-    } else {
-      profile.addEventListener('click', () => { show(); hideTimer = window.setTimeout(hide, 5000); });
-    }
+    // einmal nach dem Intro tippen, dann stehen lassen
+    window.setTimeout(show, 3600);
+    document.querySelectorAll<HTMLElement>('.hero-lang-btn').forEach((b) =>
+      b.addEventListener('click', () => window.setTimeout(() => {
+        const full = (lang() === 'en' ? quote.dataset.en : quote.dataset.de) || '';
+        if (quote.classList.contains('is-done')) qText.textContent = full;
+      }, 0)));
   }
 </script>
