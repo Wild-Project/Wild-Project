@@ -1,0 +1,29 @@
+---
+import TopicPage from '../components/TopicPage.astro';
+const topics = [
+  { n: '01', name: 'Tennis' },
+  { n: '02', name: 'Golf' },
+  { n: '03', name: 'Segeln' },
+  { n: '04', name: 'Flyfishing' },
+];
+---
+
+<TopicPage
+  active="sport"
+  title="Sport — René Wild · Wild Project"
+  heading="Sport"
+  intro="Alles, was draußen passiert: Tennis, Golf, Segeln, Flyfishing."
+  description="Sport bei Wild Project: Tennis, Golf, Segeln, Flyfishing und alles, was draußen passiert."
+>
+  <section class="tp-section">
+    <div class="tp-section-head">Outdoor</div>
+    <div class="tp-grid">
+      {topics.map((t) => (
+        <div class="tp-card">
+          <span class="tp-card-label"><span>[ {t.n} ]</span><span class="tp-status">Inhalte folgen</span></span>
+          <h2 class="tp-card-title">{t.name}</h2>
+        </div>
+      ))}
+    </div>
+  </section>
+</TopicPage>

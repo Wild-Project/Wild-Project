@@ -7,49 +7,49 @@
   </div>
 
   <img src="/basecamp/brand/logos/wp-monogram-orange.png" alt="Wild Project" class="hero-logo" />
-  <h1>
-    <span class="hero-word-wild">WILD</span> <span class="hero-word-project">PROJECT</span>
+  <h1 class="hero-title" aria-label="René Wild · Wild Project">
+    <span class="hw-rene" aria-hidden="true"><span class="hw-in">RENÉ&nbsp;</span></span><span class="hero-word-wild" aria-hidden="true">WILD</span><span class="hero-word-project hw-project" aria-hidden="true"><span class="hw-in">&nbsp;PROJECT</span></span>
   </h1>
 
-  <div class="hero-tagline" aria-label="Eishockey. Sport. Lifestyle.">
-    <span class="ht-word" style="animation-delay: 1.30s;">Eishockey</span>
-    <span class="ht-dot"  style="animation-delay: 1.42s;">·</span>
+  <nav class="hero-tagline" aria-label="Bereiche">
+    <a class="ht-word" href="/eishockey/" style="animation-delay: 1.30s;">Eishockey</a>
+    <span class="ht-dot" aria-hidden="true" style="animation-delay: 1.42s;">·</span>
     <span class="ht-word" style="animation-delay: 1.46s;">Sport</span>
-    <span class="ht-dot"  style="animation-delay: 1.58s;">·</span>
+    <span class="ht-dot" aria-hidden="true" style="animation-delay: 1.58s;">·</span>
     <span class="ht-word" style="animation-delay: 1.62s;">Lifestyle</span>
-  </div>
+  </nav>
 
-  <div class="hero-profile">
-    <img src="/brand-assets/rene-wild.png" alt="René Wild" />
-  </div>
-
-  <div class="hero-meta" aria-label="René Wild">
-    <div class="hero-meta-name">
-      <span class="hero-meta-name-row">
-        <span class="hero-meta-name-text">René Wild</span>
-        <button
-          type="button"
-          class="hero-bio-toggle"
-          aria-expanded="false"
-          aria-controls="about-section"
-          aria-label="Über mich öffnen"
-        ><span class="hero-bio-toggle-glyph" aria-hidden="true">+</span></button>
-      </span>
+  <div class="hero-profile-wrap">
+    <div class="hero-profile">
+      <img src="/brand-assets/rene-wild.png" alt="René Wild" />
     </div>
-    <div class="hero-meta-links">
+  </div>
+
+  <div class="hero-meta">
+    <span class="hero-quote" aria-hidden="true" data-de="Zuerst das Fundament, dann die Feinarbeit." data-en="Foundation first, then the fine-tuning."><span class="hq-mark">„</span><span class="hq-text"></span><span class="hq-mark hq-end">“</span><span class="hq-cursor">▌</span></span>
+    <span class="hero-meta-rule" aria-hidden="true"></span>
+    <span class="hero-meta-role"><span class="hero-role-a"><span data-text-de="Sportlicher Leiter Nachwuchs" data-text-en="Head of Youth Hockey">Sportlicher Leiter Nachwuchs</span>&nbsp;<span class="hero-x" aria-hidden="true">×</span></span> <span class="hero-role-b">Starbulls Rosenheim e.V.</span></span>
+    <div class="hero-actions">
+      <button
+        type="button"
+        class="hero-bio-toggle"
+        aria-expanded="false"
+        aria-controls="about-section"
+        aria-label="Über mich öffnen"
+    ><span class="hero-bio-toggle-text" data-text-de="Über mich" data-text-en="About me">Über mich</span><span class="hero-bio-toggle-glyph" aria-hidden="true">+</span></button>
       <a
-        class="hero-meta-link"
+        class="hero-li"
         href="https://www.linkedin.com/in/ren%C3%A9-wild-95428b314"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn-Profil von René Wild"
       >
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-        </svg>
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
       </a>
     </div>
   </div>
+
+  <div class="ci-side" aria-hidden="true">WP/26 <b>·</b> Rosenheim <b>·</b> 47.857° N <b>·</b> 12.118° E</div>
 
   <div class="hero-divider" aria-hidden="true"><span></span></div>
 </div>
@@ -59,12 +59,73 @@
     display: flex; flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 22vh 3rem 80px;
-    min-height: 82vh;
+    padding: 22vh 3rem 48px;
+    min-height: 78vh;
     position: relative;
     text-align: center;
     background: #F5F5F3;
     z-index: 1;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  /* ── CI als Gestaltungselement an der Seite ── */
+  .hero::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+    z-index: 3;
+    background: linear-gradient(180deg, #FC5000 0 25%, #050505 25% 50%, #00354F 50% 75%, #E4E4E4 75% 100%);
+    transform: scaleY(0); transform-origin: top;
+    animation: ciBar 1s cubic-bezier(.5,.1,.2,1) 1.9s forwards;
+  }
+  @keyframes ciBar { to { transform: scaleY(1); } }
+  .ci-side {
+    position: absolute; right: -90px; top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    white-space: nowrap;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(0,0,0,0.45);
+    opacity: 0; animation: ciIn 0.8s cubic-bezier(.5,.1,.2,1) 2.0s forwards;
+  }
+  .ci-side b { color: var(--orange); }
+  @keyframes ciIn { to { opacity: 1; } }
+
+  /* ── Zitat beim Hover übers Foto (Mono, wird getippt) ── */
+  .hero-quote {
+    display: block;
+    min-height: 1.7em;
+    margin: 8px auto 14px;
+    white-space: nowrap;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 13px; letter-spacing: 0.5px; line-height: 1.7;
+    text-transform: none;
+    color: #1a1a1a;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .hero-quote.is-on { opacity: 1; }
+  .hq-mark { color: var(--orange); font-weight: 600; }
+  .hq-end { opacity: 0; }
+  .hero-quote.is-done .hq-end { opacity: 1; }
+  .hq-cursor { color: var(--orange); margin-left: 2px; animation: hqBlink 0.9s steps(2, start) infinite; }
+  .hero-quote.is-done .hq-cursor { display: none; }
+  @keyframes hqBlink { to { visibility: hidden; } }
+
+  @media (max-width: 900px) {
+    .ci-side { display: none; }
+    .hero::before {
+      right: 0; bottom: auto; width: auto; height: 4px;
+      background: linear-gradient(90deg, #FC5000 0 25%, #050505 25% 50%, #00354F 50% 75%, #E4E4E4 75% 100%);
+      transform: scaleX(0); transform-origin: left;
+      animation-name: ciBarX;
+    }
+    @keyframes ciBarX { to { transform: scaleX(1); } }
+    .hero-quote { font-size: 11.5px; letter-spacing: 0.2px; margin: 6px auto 12px; }
+  }
+  .hero-profile-wrap {
+    position: relative;
+    margin-top: 36px;
   }
   .hero-lang-toggle {
     position: absolute;
@@ -75,7 +136,7 @@
     gap: 6px;
     z-index: 4;
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 1.5px;
     opacity: 0;
     transform: translateY(-4px);
@@ -87,8 +148,10 @@
     border: 0;
     padding: 2px 3px;
     cursor: pointer;
-    color: rgba(0,0,0,0.32);
+    color: rgba(0,0,0,0.45);
     font-family: inherit;
+    min-width: 32px;
+    min-height: 32px;
     font-size: inherit;
     letter-spacing: inherit;
     font-weight: 500;
@@ -123,11 +186,11 @@
     animation: heroFromTop 0.8s cubic-bezier(.5,.1,.2,1) 0.2s forwards;
   }
   .hero-profile {
+    position: relative;
     width: 140px;
     height: 140px;
     border-radius: 50%;
     overflow: hidden;
-    margin-top: 36px;
     border: 2px solid var(--orange);
     background: #F5F5F3;
     opacity: 0;
@@ -167,31 +230,40 @@
 
   /* ── Hero-Meta: Name + Koordinaten links unten ── */
   .hero-meta {
-    position: absolute;
-    bottom: 28px;
-    left: 32px;
-    text-align: left;
+    position: static;
+    margin: 40px auto 0;
+    text-align: center;
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
     font-variant-numeric: tabular-nums;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 1.2px;
     line-height: 1.7;
-    color: rgba(0,0,0,0.55);
+    color: rgba(0,0,0,0.62);
     opacity: 0;
-    transform: translateX(-12px);
+    transform: translateY(8px);
     animation: heroMetaFade 1s cubic-bezier(.5,.1,.2,1) 1.6s forwards;
   }
   .hero-meta-name {
     color: var(--orange);
-    font-size: 12.5px;
+    font-size: 14px;
     font-weight: 700;
     letter-spacing: 2.8px;
     text-transform: uppercase;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 7px;
+  }
+  .hero-meta-role {
+    display: block;
+    margin: 0 auto 18px;
+    max-width: 92vw;
+    text-wrap: balance;
+    font-size: 11.5px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.62);
   }
   .hero-meta-name-row {
     display: inline-flex;
@@ -205,30 +277,113 @@
     height: 1px;
     background: var(--orange);
     opacity: 0.55;
-    margin-top: 0;
+    margin: 0 auto;
   }
-  .hero-bio-toggle {
-    appearance: none;
-    background: transparent;
-    border: 1px solid rgba(252,80,0,0.4);
+  .hero-role-a, .hero-role-b { white-space: nowrap; display: inline-block; }
+  .hero-x {
+    display: inline-block;
     color: var(--orange);
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1;
-    cursor: pointer;
-    padding: 0;
+    font-weight: 700;
+    font-size: 1.25em;
+    line-height: 0;
+    margin: 0 4px;
+    transform-origin: 50% 50%;
+    animation: heroXIn 0.9s cubic-bezier(.34,1.56,.64,1) 2.2s both, heroXSpin 6s ease-in-out 4s infinite;
+  }
+  @keyframes heroXIn {
+    from { transform: rotate(-180deg) scale(0); opacity: 0; }
+    to   { transform: rotate(0) scale(1); opacity: 1; }
+  }
+  @keyframes heroXSpin {
+    0%, 82% { transform: rotate(0); }
+    92%     { transform: rotate(90deg) scale(1.25); }
+    100%    { transform: rotate(90deg); }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero-x { animation: none; } .hero::before { animation: none; transform: none; } }
+  .hero-meta-rule {
+    display: block;
+    width: 32px;
+    height: 1px;
+    margin: 0 auto 14px;
+    background: var(--orange);
+    opacity: 0.6;
+  }
+  /* ── Titel-Morph: WILD PROJECT → RENÉ WILD ── */
+  .hero h1 .hw-rene,
+  .hero h1 .hw-project {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: bottom;
+    transition: width 1.1s cubic-bezier(.76,0,.24,1);
+  }
+  .hero h1 .hw-rene { width: 0; }
+  .hero h1.hero-title { padding-top: 0.16em; margin-top: -0.16em; }
+  .hero h1 .hw-rene, .hero h1 .hw-project { padding-top: 0.16em; margin-top: -0.16em; }
+  .hero h1 .hw-in {
+    display: inline-block;
+    transition: transform 0.9s cubic-bezier(.76,0,.24,1), opacity 0.6s ease;
+  }
+  .hero h1 .hw-rene .hw-in { transform: translateY(105%); opacity: 0; color: #1a1a1a; }
+  .hero h1.is-morphed .hw-rene .hw-in { transform: translateY(0); opacity: 1; transition-delay: 0.25s; }
+  .hero h1.is-morphed .hw-project .hw-in { transform: translateY(-105%); opacity: 0; }
+  .hero h1.is-instant .hw-rene,
+  .hero h1.is-instant .hw-project,
+  .hero h1.is-instant .hw-in { transition: none !important; }
+  .hero-tagline .ht-word {
+    color: inherit;
+    text-decoration: none;
+    padding: 6px 2px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .hero-tagline a.ht-word:hover,
+  .hero-tagline a.ht-word:focus-visible {
+    color: var(--orange);
+    border-bottom-color: rgba(252,80,0,0.5);
+    outline: none;
+  }
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .hero-li {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 44px;
+    min-height: 44px;
+    box-sizing: border-box;
+    border: 1px solid rgba(252,80,0,0.45);
+    color: var(--orange);
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .hero-li:hover { background: rgba(252,80,0,0.12); border-color: var(--orange); }
+  .hero-li:focus-visible { outline: 2px solid rgba(252,80,0,0.55); outline-offset: 2px; }
+  .hero-bio-toggle {
+    appearance: none;
+    background: transparent;
+    border: 1px solid rgba(252,80,0,0.45);
+    color: var(--orange);
+    min-height: 44px;
+    border-radius: 0;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
     transition: background 0.2s ease, border-color 0.2s ease;
     user-select: none;
-    margin-left: 2px;
-    letter-spacing: 0;
-    text-transform: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
   }
   .hero-bio-toggle:hover {
     background: rgba(252,80,0,0.12);
@@ -243,8 +398,11 @@
   }
   .hero-bio-toggle-glyph {
     display: inline-block;
-    transform: translateY(-0.5px);
+    font-size: 16px;
+    letter-spacing: 0;
+    transition: transform 0.3s ease;
   }
+  .hero-bio-toggle[aria-expanded="true"] .hero-bio-toggle-glyph { transform: rotate(45deg); }
   .hero-meta-line {
     display: flex;
     align-items: center;
@@ -263,16 +421,22 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     gap: 12px;
-    margin-top: 14px;
+    margin-top: 10px;
   }
+  .hero-meta-link-br { color: var(--orange); }
   .hero-meta-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 22px;
-    height: 22px;
-    color: #00354F;
+    gap: 4px;
+    min-height: 44px;
+    padding: 0 6px;
+    font-size: 11.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.62);
     text-decoration: none;
     border-radius: 4px;
     transition: transform 0.3s cubic-bezier(.5,.1,.2,1), opacity 0.25s ease;
@@ -315,7 +479,7 @@
     transform: translateX(4px);
   }
   @keyframes heroMetaFade {
-    to { opacity: 1; transform: translateX(0); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   /* ── Hero-Divider: orange Linie weiß↔schwarz, animiert ── */
@@ -416,11 +580,11 @@
     gap: 11px;
     margin-top: 18px;
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 400;
     letter-spacing: 3.2px;
     text-transform: uppercase;
-    color: rgba(0,0,0,0.5);
+    color: rgba(0,0,0,0.6);
     user-select: none;
   }
   .hero-tagline .ht-word {
@@ -454,13 +618,13 @@
 
   @media (max-width: 700px) {
     .hero {
-      padding: 28vh 1.25rem 32px;
-      min-height: 56vh;
+      padding: 16vh 1.25rem 36px;
+      min-height: 0;
     }
     .hero-lang-toggle {
       top: 18px;
       right: 16px;
-      font-size: 9px;
+      font-size: 11px;
       letter-spacing: 1.3px;
       gap: 4px;
     }
@@ -477,23 +641,24 @@
     .hero-tagline {
       margin-top: 12px;
       gap: 8px;
-      font-size: 8px;
+      font-size: 10px;
       letter-spacing: 2.4px;
     }
 
     /* Meta-Block: aus absolut → in den Fluss, zentriert */
     .hero-meta {
       position: static;
-      margin: 36px auto 6px;
+      margin: 32px auto 6px;
       text-align: center;
-      font-size: 9px;
+      font-size: 10.5px;
       letter-spacing: 1.1px;
       line-height: 1.7;
       transform: translateY(8px);
       animation-name: heroMetaFadeMobile;
     }
+    .hero-meta-role { font-size: 10.5px; letter-spacing: 1.2px; margin-bottom: 16px; }
     .hero-meta-name {
-      font-size: 11.5px;
+      font-size: 13px;
       letter-spacing: 2.5px;
       margin-bottom: 8px;
       align-items: center;
@@ -502,11 +667,7 @@
       margin: 0 auto;
       width: 28px;
     }
-    .hero-bio-toggle {
-      width: 19px;
-      height: 19px;
-      font-size: 12px;
-    }
+
     .hero-meta-line {
       justify-content: center;
       gap: 8px;
@@ -517,17 +678,14 @@
       justify-content: center;
       gap: 14px;
     }
-    .hero-meta-link {
-      width: 24px;
-      height: 24px;
-    }
+
     .hero-meta-link svg { width: 15px; height: 15px; }
   }
   @keyframes heroMetaFadeMobile {
     to { opacity: 1; transform: translateY(0); }
   }
   @media (max-width: 400px) {
-    .hero { padding-top: 26vh; }
+    .hero { padding-top: 14vh; }
     .hero h1 { letter-spacing: -1px; font-size: 2.2rem; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -538,3 +696,58 @@
     }
   }
 </style>
+
+<script>
+  // Titel-Morph: nach dem Intro wird aus WILD PROJECT → RENÉ WILD
+  const title = document.querySelector<HTMLElement>('.hero-title');
+  const rene = title?.querySelector<HTMLElement>('.hw-rene');
+  const project = title?.querySelector<HTMLElement>('.hw-project');
+  if (title && rene && project) {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const morph = () => {
+      const reneW = (rene.firstElementChild as HTMLElement).scrollWidth;
+      project.style.width = project.scrollWidth + 'px';
+      void project.offsetWidth;
+      title.classList.add('is-morphed');
+      rene.style.width = reneW + 'px';
+      project.style.width = '0px';
+      // danach wieder flexibel, damit Resize/Schriftwechsel sauber bleiben
+      setTimeout(() => { rene.style.width = 'auto'; }, 1500);
+    };
+    if (reduced) {
+      title.classList.add('is-instant');
+      morph();
+    } else {
+      setTimeout(morph, 2900);
+    }
+  }
+
+  // Zitat: beim Hover (Desktop) bzw. Antippen (Handy) aufs Foto wird es in Mono getippt
+  const profile = document.querySelector<HTMLElement>('.hero-profile');
+  const quote = document.querySelector<HTMLElement>('.hero-quote');
+  const qText = quote?.querySelector<HTMLElement>('.hq-text');
+  if (profile && quote && qText) {
+    let timer = 0; let hideTimer = 0;
+    const lang = () => (document.querySelector<HTMLElement>('.hero-lang-btn.is-active')?.dataset.lang === 'en' ? 'en' : 'de');
+    const show = () => {
+      clearInterval(timer); clearTimeout(hideTimer);
+      const full = (lang() === 'en' ? quote.dataset.en : quote.dataset.de) || '';
+      quote.classList.remove('is-done'); quote.classList.add('is-on');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        qText.textContent = full; quote.classList.add('is-done'); return;
+      }
+      let i = 0; qText.textContent = '';
+      timer = window.setInterval(() => {
+        i += 1; qText.textContent = full.slice(0, i);
+        if (i >= full.length) { clearInterval(timer); quote.classList.add('is-done'); }
+      }, 32);
+    };
+    const hide = () => { clearInterval(timer); quote.classList.remove('is-on'); };
+    if (window.matchMedia('(hover: hover)').matches) {
+      profile.addEventListener('mouseenter', show);
+      profile.addEventListener('mouseleave', hide);
+    } else {
+      profile.addEventListener('click', () => { show(); hideTimer = window.setTimeout(hide, 5000); });
+    }
+  }
+</script>

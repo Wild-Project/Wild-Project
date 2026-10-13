@@ -2,12 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
-import CookieBanner from '../components/CookieBanner.astro';
 ---
 
 <Layout
   title="Wild Project — René Wild · Eishockey · Sport · Lifestyle"
-  description="Ich bin René Wild — Nachwuchs-Eishockeytrainer und Development Coach der Starbulls Rosenheim. Wild Project ist meine Plattform für eigene Projekte rund um Eishockey, Sport und Lifestyle. Den Anfang macht der Shift2Pro Podcast."
+  description="René Wild — Sportlicher Leiter Nachwuchs und Head Coach U17 der Starbulls Rosenheim. Wild Project ist meine Plattform für eigene Projekte rund um Eishockey, Sport und Lifestyle, allen voran der Shift2Pro Podcast. Coaches-CV als PDF."
   path="/"
   image="/wp-logo.png"
 >
@@ -32,33 +31,47 @@ import CookieBanner from '../components/CookieBanner.astro';
         </div>
         <div class="about-terminal" role="region" aria-label="Biografie">
           <div class="about-terminal-prompt" aria-hidden="true">
-            <span class="about-prompt-glyph">$</span>
-            <span class="about-prompt-cmd">cat ./about-me.txt</span>
+            <span class="about-prompt-glyph">[</span>
+            <span class="about-prompt-cmd" data-text-de="01 · Profil" data-text-en="01 · Profile">01 · Profil</span>
+            <span class="about-prompt-glyph">]</span>
           </div>
           <p
             class="about-line"
-            data-text-de="Servus, ich bin René Wild — stolzer Papa, professioneller Nachwuchs-Eishockey-Trainer und Development Coach. Wild Project ist mein Zuhause, die Plattform, von der alles ausgeht: Eines nach dem anderen, jedes mit eigener Handschrift."
-            data-text-en="Hey, I'm René Wild — proud dad, professional junior hockey coach and development coach. Wild Project is my home base — the platform where it all starts: one project at a time, each with its own signature."
-          ></p>
+            data-text-de="Servus, ich bin René Wild — stolzer Papa, Nachwuchs-Eishockey-Trainer und Sportlicher Leiter Nachwuchs der Starbulls Rosenheim. Wild Project ist mein Zuhause, die Plattform, von der alles ausgeht: Eines nach dem anderen, jedes mit eigener Handschrift."
+            data-text-en="Hey, I'm René Wild — proud dad, youth hockey coach and Head of Youth Hockey at the Starbulls Rosenheim. Wild Project is my home base — the platform where it all starts: one project at a time, each with its own signature."
+          >Servus, ich bin René Wild — stolzer Papa, Nachwuchs-Eishockey-Trainer und Sportlicher Leiter Nachwuchs der Starbulls Rosenheim. Wild Project ist mein Zuhause, die Plattform, von der alles ausgeht: Eines nach dem anderen, jedes mit eigener Handschrift.</p>
           <p
             class="about-line"
             data-text-de="Eishockey prägt einen großen Teil meines Lebens. Nicht nur, weil ich fast täglich am Eis stehe — sondern weil ich den Sport liebe. Das Spiel, die Menschen, die Geschichten, der Lifestyle drumherum."
             data-text-en="Hockey runs through a big part of my life. Not just because I'm on the ice almost every day — but because I love the sport. The game, the people, the stories, the lifestyle around it."
-          ></p>
+          >Eishockey prägt einen großen Teil meines Lebens. Nicht nur, weil ich fast täglich am Eis stehe — sondern weil ich den Sport liebe. Das Spiel, die Menschen, die Geschichten, der Lifestyle drumherum.</p>
           <p
             class="about-line"
             data-text-de="Genau zwischen Eishalle und Leben verwirkliche ich meine Ideen — Schritt für Schritt, kein Masterplan."
             data-text-en="Right between the rink and real life is where I bring my ideas to life — step by step, no master plan."
-          ></p>
+          >Genau zwischen Eishalle und Leben verwirkliche ich meine Ideen — Schritt für Schritt, kein Masterplan.</p>
           <p
             class="about-line about-line--cta"
             data-text-de="Bin immer offen für spannende Collaborations oder einen Austausch über neue Projekte — schreib mir einfach."
             data-text-en="Always open to exciting collaborations or a chat about new projects — just hit me up."
-          ></p>
+          >Bin immer offen für spannende Collaborations oder einen Austausch über neue Projekte — schreib mir einfach.</p>
+          <div class="about-stats">
+            <div class="about-cv-prompt" aria-hidden="true">
+              <span class="about-prompt-glyph">[</span>
+              <span class="about-prompt-cmd" data-text-de="02 · In Zahlen" data-text-en="02 · In numbers">02 · In Zahlen</span>
+              <span class="about-prompt-glyph">]</span>
+            </div>
+            <dl class="about-stats-list">
+              <div class="about-stat"><dt class="about-stat-val">30+</dt><dd class="about-stat-label" data-text-de="Jahre im Eishockey" data-text-en="years in hockey">Jahre im Eishockey</dd></div>
+              <div class="about-stat"><dt class="about-stat-val">U7–U20</dt><dd class="about-stat-label" data-text-de="Nachwuchs in Verantwortung" data-text-en="youth teams in my charge">Nachwuchs in Verantwortung</dd></div>
+              <div class="about-stat"><dt class="about-stat-val">2×A</dt><dd class="about-stat-label" data-text-de="A-Lizenzen DE · AT" data-text-en="A licences DE · AT">A-Lizenzen DE · AT</dd></div>
+            </dl>
+          </div>
           <div class="about-cv">
             <div class="about-cv-prompt" aria-hidden="true">
-              <span class="about-prompt-glyph">$</span>
-              <span class="about-prompt-cmd">ls ./coaches-cv/</span>
+              <span class="about-prompt-glyph">[</span>
+              <span class="about-prompt-cmd">03 · Coaches-CV</span>
+              <span class="about-prompt-glyph">]</span>
             </div>
             <div class="about-cv-links">
               <a class="about-cv-link" href="/downloads/coaches-cv-rene-wild-de.pdf" download hreflang="de" type="application/pdf">
@@ -93,7 +106,7 @@ import CookieBanner from '../components/CookieBanner.astro';
         <article class="project">
           <div class="project-meta">
             <span class="project-num">Aktuelles Projekt</span>
-            <span class="project-status"><span class="project-status-dot" aria-hidden="true"></span>in arbeit</span>
+            <span class="project-status"><span class="project-status-dot" aria-hidden="true"></span>podcast</span>
           </div>
           <h2 class="project-title">
             <img src="/brand-assets/Logografie-02-white.png" alt="Shift2Pro — Eishockey · Development · Podcast" class="project-logo project-logo--dark" width="963" height="336" />
@@ -110,7 +123,6 @@ import CookieBanner from '../components/CookieBanner.astro';
 
     <Footer />
   </div>
-  <CookieBanner />
 </Layout>
 
 <style>
@@ -175,9 +187,9 @@ import CookieBanner from '../components/CookieBanner.astro';
     opacity: 0;
     overflow: hidden;
     transition:
-      max-height 0.7s cubic-bezier(.5,.1,.2,1),
-      opacity 0.5s ease,
-      margin-top 0.6s cubic-bezier(.5,.1,.2,1);
+      max-height 0.45s cubic-bezier(.2,.8,.2,1),
+      opacity 0.25s ease,
+      margin-top 0.35s cubic-bezier(.2,.8,.2,1);
   }
   .about-section[data-state="open"] {
     max-height: 1800px;
@@ -199,7 +211,7 @@ import CookieBanner from '../components/CookieBanner.astro';
   }
   .about-eyebrow {
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--orange);
@@ -210,9 +222,9 @@ import CookieBanner from '../components/CookieBanner.astro';
     max-width: 540px;
     text-align: left;
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 12.5px;
+    font-size: 13.5px;
     line-height: 1.75;
-    color: rgba(255,255,255,0.72);
+    color: rgba(255,255,255,0.78);
     padding: 18px 22px 20px;
     background: rgba(255,255,255,0.018);
     border-left: 1px solid rgba(252,80,0,0.45);
@@ -230,7 +242,10 @@ import CookieBanner from '../components/CookieBanner.astro';
     font-weight: 600;
   }
   .about-prompt-cmd {
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.6);
+    margin-right: 8px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
   .about-line {
     margin: 0 0 14px;
@@ -250,6 +265,36 @@ import CookieBanner from '../components/CookieBanner.astro';
     border-top: 1px solid rgba(252,80,0,0.18);
     color: rgba(255,255,255,0.85);
   }
+  .about-stats {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(255,255,255,0.10);
+  }
+  .about-stats-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 0;
+  }
+  .about-stat { display: flex; align-items: baseline; gap: 18px; }
+  .about-stat-val {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: var(--orange);
+    min-width: 120px;
+  }
+  .about-stat-label {
+    margin: 0;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+  :global(body.light) .about-stats { border-top-color: rgba(0,0,0,0.10); }
+  :global(body.light) .about-stat-label { color: rgba(0,0,0,0.6); }
   .about-cv {
     margin-top: 22px;
     padding-top: 16px;
@@ -328,6 +373,14 @@ import CookieBanner from '../components/CookieBanner.astro';
   :global(.about-cta-inline-link:focus-visible) {
     outline: 1px dotted rgba(252,80,0,0.5);
     outline-offset: 3px;
+  }
+  .about-shot {
+    animation: aboutShot 0.42s cubic-bezier(.16,1,.3,1) both;
+  }
+  @keyframes aboutShot {
+    from { opacity: 0; transform: translateX(-72px); filter: blur(3px); }
+    60%  { filter: blur(0); }
+    to   { opacity: 1; transform: none; filter: none; }
   }
   .about-line--typing::after {
     content: '▌';
@@ -427,7 +480,7 @@ import CookieBanner from '../components/CookieBanner.astro';
   }
   .projects-eyebrow {
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--orange);
@@ -487,7 +540,7 @@ import CookieBanner from '../components/CookieBanner.astro';
     border: 1px solid rgba(252,80,0,0.3);
     color: var(--orange);
     letter-spacing: 1.5px;
-    font-size: 9px;
+    font-size: 10.5px;
   }
   .project-status-dot {
     display: inline-block;
@@ -629,20 +682,22 @@ import CookieBanner from '../components/CookieBanner.astro';
     .about-section[data-state="open"] { margin-top: 56px; max-height: 2400px; }
     .about-head { margin-bottom: 16px; gap: 12px; }
     .about-eyebrow-line { width: 24px; }
-    .about-eyebrow { font-size: 9px; letter-spacing: 2.5px; }
-    .about-terminal { padding: 14px 16px 16px; font-size: 11.5px; line-height: 1.7; }
-    .about-terminal-prompt { font-size: 9.5px; margin-bottom: 12px; padding-bottom: 10px; letter-spacing: 1px; }
+    .about-eyebrow { font-size: 10.5px; letter-spacing: 2.5px; }
+    .about-terminal { padding: 16px 16px 18px; font-size: 13px; line-height: 1.7; }
+    .about-terminal-prompt { font-size: 11px; margin-bottom: 12px; padding-bottom: 10px; letter-spacing: 1px; }
     .about-line { margin-bottom: 12px; }
     .about-cv { margin-top: 18px; padding-top: 14px; }
-    .about-cv-prompt { font-size: 9.5px; margin-bottom: 12px; letter-spacing: 1px; }
+    .about-cv-prompt { font-size: 11px; margin-bottom: 12px; letter-spacing: 1px; }
     .about-cv-links { flex-direction: column; gap: 8px; }
-    .about-cv-link { flex: 0 0 auto; width: 100%; box-sizing: border-box; font-size: 10.5px; padding: 0 14px; min-height: 48px; }
+    .about-cv-link { flex: 0 0 auto; width: 100%; box-sizing: border-box; font-size: 11.5px; padding: 0 14px; min-height: 48px; }
+    .about-stat { gap: 14px; }
+    .about-stat-val { font-size: 24px; min-width: 96px; }
 
     /* Projekte (mobile) */
     .projects-section { margin-top: 44px; }
     .projects-head { margin-bottom: 16px; gap: 12px; }
     .projects-eyebrow-line { width: 24px; }
-    .projects-eyebrow { font-size: 9px; letter-spacing: 2.5px; }
+    .projects-eyebrow { font-size: 10.5px; letter-spacing: 2.5px; }
     .project { padding: 24px 20px; }
     .project-meta { margin-bottom: 14px; gap: 10px; font-size: 9px; }
     .project-status { font-size: 8.5px; padding: 4px 8px 3px; letter-spacing: 1.2px; }
@@ -729,18 +784,23 @@ import CookieBanner from '../components/CookieBanner.astro';
         linkifyCta();
         return;
       }
-      for (const line of lines) {
-        if (id !== runId) return;
-        line.classList.add('about-line--typing');
-        await typeLine(line, getText(line), 16, id);
-        line.classList.remove('about-line--typing');
-        await wait(220);
-      }
-      if (id === runId) linkifyCta();
+      // „Schuss“: Text steht sofort da und fährt zeilenweise schnell herein
+      const shots = [
+        ...lines,
+        ...Array.from(section.querySelectorAll<HTMLElement>('.about-stats, .about-cv')),
+      ];
+      shots.forEach((el, i) => {
+        if (el.classList.contains('about-line')) el.textContent = getText(el);
+        el.classList.remove('about-shot');
+        void el.offsetWidth;
+        el.style.animationDelay = (60 + i * 55) + 'ms';
+        el.classList.add('about-shot');
+      });
+      linkifyCta();
     };
 
     const langTargets = Array.from(
-      section.querySelectorAll<HTMLElement>('[data-text-de]')
+      document.querySelectorAll<HTMLElement>('[data-text-de]')
     );
 
     const setLang = (next: 'de' | 'en') => {
