@@ -1,0 +1,35 @@
+---
+// DE/EN-Umschalter für Unterseiten. Logik steckt in I18n.astro.
+interface Props { tone?: 'light' | 'dark' }
+const { tone = 'light' } = Astro.props;
+---
+<div class:list={['wp-lang', `wp-lang--${tone}`]} role="group" aria-label="Sprache / Language">
+  <button type="button" class="wp-lang-btn is-active" data-lang="de" aria-pressed="true">DE</button>
+  <span class="wp-lang-sep" aria-hidden="true">/</span>
+  <button type="button" class="wp-lang-btn" data-lang="en" aria-pressed="false">EN</button>
+</div>
+
+<style>
+  .wp-lang {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px; letter-spacing: 1.5px;
+  }
+  .wp-lang-btn {
+    appearance: none; background: transparent; border: 0; cursor: pointer;
+    padding: 2px 3px; min-width: 32px; min-height: 32px; line-height: 1;
+    font-family: inherit; font-size: inherit; letter-spacing: inherit; font-weight: 500;
+    text-transform: uppercase; user-select: none;
+    transition: color 0.22s ease;
+  }
+  .wp-lang--light .wp-lang-btn { color: rgba(0,0,0,0.45); }
+  .wp-lang--light .wp-lang-btn:hover { color: rgba(0,0,0,0.72); }
+  .wp-lang--light .wp-lang-sep { color: rgba(0,0,0,0.2); }
+  .wp-lang--dark .wp-lang-btn { color: rgba(255,255,255,0.45); }
+  .wp-lang--dark .wp-lang-btn:hover { color: rgba(255,255,255,0.8); }
+  .wp-lang--dark .wp-lang-sep { color: rgba(255,255,255,0.2); }
+  .wp-lang .wp-lang-btn.is-active { color: var(--orange); }
+  .wp-lang-btn:focus-visible { outline: 1px solid rgba(252,80,0,0.5); outline-offset: 2px; }
+  .wp-lang-sep { font-weight: 300; }
+  @media (max-width: 700px) { .wp-lang { font-size: 11px; letter-spacing: 1.3px; gap: 4px; } }
+</style>

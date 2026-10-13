@@ -1,12 +1,17 @@
 ---
+import I18n from '../components/I18n.astro';
+import LangToggle from '../components/LangToggle.astro';
 interface Props {
   title: string;
   description: string;
   pageTitle: string;
   intro: string;
+  pageTitleEn?: string;
+  introEn?: string;
+  germanOnly?: boolean;
 }
 
-const { title, description, pageTitle, intro } = Astro.props;
+const { title, description, pageTitle, intro, pageTitleEn, introEn, germanOnly = false } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -23,21 +28,26 @@ const { title, description, pageTitle, intro } = Astro.props;
 
 <nav>
   <a href="/" class="nav-brand"><img src="/wp-logo.png" alt="Wild Project" class="nav-logo"></a>
-  <a href="/" class="nav-back">&larr; Zur&uuml;ck</a>
+  <div class="nav-right">
+    <LangToggle tone="dark" />
+    <a href="/" class="nav-back" data-i18n-en="&larr; Back">&larr; Zur&uuml;ck</a>
+  </div>
 </nav>
 
 <div class="page">
-  <h1 class="page-title">{pageTitle}<span>.</span></h1>
-  {intro && <p class="page-intro">{intro}</p>}
+  <h1 class="page-title"><span class="page-title-text" data-i18n-en={pageTitleEn}>{pageTitle}</span><span>.</span></h1>
+  {intro && <p class="page-intro" data-i18n-en={introEn}>{intro}</p>}
+  {germanOnly && <p class="lang-note" data-i18n-only="en"><span class="lang-note-dot"></span>This page is only available in German, the legally binding version.</p>}
 
   <slot />
 
   <div class="footer">
     <p>&copy; 2026 Wild Project</p>
-    <p style="margin-top: 8px;"><a href="/">Startseite</a> &middot; <a href="/impressum">Impressum</a> &middot; <a href="/datenschutz">Datenschutz</a> &middot; <a href="/kontakt">Kontakt</a></p>
+    <p style="margin-top: 8px;"><a href="/" data-i18n-en="Home">Startseite</a> &middot; <a href="/impressum" data-i18n-en="Legal notice">Impressum</a> &middot; <a href="/datenschutz" data-i18n-en="Privacy">Datenschutz</a> &middot; <a href="/kontakt" data-i18n-en="Contact">Kontakt</a></p>
   </div>
 </div>
 
+<I18n />
 </body>
 </html>
 
@@ -57,6 +67,8 @@ const { title, description, pageTitle, intro } = Astro.props;
     border-bottom: 1px solid rgba(255,255,255,0.04);
   }
   .nav-brand { display: flex; align-items: center; }
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  .page-title span.page-title-text { color: inherit; }
   .nav-logo { height: 36px; width: auto; }
   .nav-back {
     font-size: 11px; font-weight: 400;

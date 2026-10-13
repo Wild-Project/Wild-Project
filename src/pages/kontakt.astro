@@ -6,37 +6,40 @@ import LegalLayout from '../layouts/LegalLayout.astro';
   title="Kontakt — Wild Project"
   description="Kontaktiere Wild Project direkt. Kein Bot, kein Callcenter."
   pageTitle="Kontakt"
+  pageTitleEn="Contact"
   intro="Kurz, direkt, fertig."
+  introEn="Short, direct, done."
 >
-  <h2>Nachricht senden</h2>
-  <p>Kein Account, kein Login — einfach ausfüllen. Dein Mail-Programm öffnet sich mit der fertigen Nachricht.</p>
+  <h2 data-i18n-en="Send a message">Nachricht senden</h2>
+  <p data-i18n-en="No account, no login — just fill it in. Your mail app opens with the message ready to send.">Kein Account, kein Login — einfach ausfüllen. Dein Mail-Programm öffnet sich mit der fertigen Nachricht.</p>
 
   <form class="contact-form" id="contactForm" onsubmit="return sendMail()">
     <div class="form-field">
       <label for="name">Name</label>
-      <input type="text" id="name" required autocomplete="name" placeholder="Dein Name">
+      <input type="text" id="name" required autocomplete="name" placeholder="Dein Name" data-i18n-placeholder="Your name">
     </div>
     <div class="form-field">
-      <label for="email">E-Mail</label>
-      <input type="email" id="email" required autocomplete="email" placeholder="Deine E-Mail-Adresse">
+      <label for="email" data-i18n-en="Email">E-Mail</label>
+      <input type="email" id="email" required autocomplete="email" placeholder="Deine E-Mail-Adresse" data-i18n-placeholder="Your email address">
     </div>
     <div class="form-field">
-      <label for="message">Nachricht</label>
-      <textarea id="message" rows="5" required placeholder="Was liegt an?"></textarea>
+      <label for="message" data-i18n-en="Message">Nachricht</label>
+      <textarea id="message" rows="5" required placeholder="Was liegt an?" data-i18n-placeholder="What's up?"></textarea>
     </div>
-    <button type="submit" class="form-btn">Mail öffnen</button>
+    <button type="submit" class="form-btn" data-i18n-en="Open mail">Mail öffnen</button>
   </form>
 
-  <h2>Oder direkt</h2>
-  <p>E-Mail: <a href="mailto:rene@wildproject.pro">rene@wildproject.pro</a></p>
+  <h2 data-i18n-en="Or directly">Oder direkt</h2>
+  <p><span data-i18n-en="Email:">E-Mail:</span> <a href="mailto:rene@wildproject.pro">rene@wildproject.pro</a></p>
 
   <script is:inline>
     function sendMail() {
       var name = document.getElementById('name').value.trim();
       var email = document.getElementById('email').value.trim();
       var msg = document.getElementById('message').value.trim();
-      var subject = encodeURIComponent('Kontaktanfrage von ' + name);
-      var body = encodeURIComponent('Name: ' + name + '\nE-Mail: ' + email + '\n\n' + msg);
+      var en = document.documentElement.lang === 'en';
+      var subject = encodeURIComponent((en ? 'Contact request from ' : 'Kontaktanfrage von ') + name);
+      var body = encodeURIComponent('Name: ' + name + '\n' + (en ? 'Email: ' : 'E-Mail: ') + email + '\n\n' + msg);
       window.location.href = 'mailto:rene@wildproject.pro?subject=' + subject + '&body=' + body;
       return false;
     }

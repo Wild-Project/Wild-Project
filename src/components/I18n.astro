@@ -1,0 +1,56 @@
+---
+// Zweisprachigkeit DE/EN ohne eigene URLs.
+// [data-i18n-en]            → Inhalt (HTML) auf Englisch
+// [data-i18n-alt|placeholder|label|credit] → Attribute alt / placeholder / aria-label / data-credit
+// [data-i18n-only="en"|"de"] → nur in der jeweiligen Sprache sichtbar
+// Sprachwahl wird als wp_lang im localStorage gemerkt (siehe Datenschutz).
+---
+<style is:global>
+  html:not([lang="en"]) [data-i18n-only="en"] { display: none !important; }
+  html[lang="en"] [data-i18n-only="de"] { display: none !important; }
+</style>
+<script is:inline>
+(function () {
+  var KEY = 'wp_lang';
+  var ATTRS = { alt: 'alt', placeholder: 'placeholder', label: 'aria-label', credit: 'data-credit' };
+  var stored = 'de';
+  try { stored = localStorage.getItem(KEY) === 'en' ? 'en' : 'de'; } catch (e) {}
+
+  function apply(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-i18n-en]').forEach(function (el) {
+      if (el.__i18nDe === undefined) el.__i18nDe = el.innerHTML;
+      el.innerHTML = l === 'en' ? el.getAttribute('data-i18n-en') : el.__i18nDe;
+    });
+    Object.keys(ATTRS).forEach(function (k) {
+      var attr = ATTRS[k];
+      document.querySelectorAll('[data-i18n-' + k + ']').forEach(function (el) {
+        if (el['__i18n_' + k] === undefined) el['__i18n_' + k] = el.getAttribute(attr) || '';
+        el.setAttribute(attr, l === 'en' ? el.getAttribute('data-i18n-' + k) : el['__i18n_' + k]);
+      });
+    });
+    document.querySelectorAll('.wp-lang-btn').forEach(function (b) {
+      var on = b.getAttribute('data-lang') === l;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', String(on));
+    });
+  }
+  function save(l) { try { localStorage.setItem(KEY, l); } catch (e) {} }
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.wp-lang-btn, .hero-lang-btn');
+    if (!b) return;
+    var l = b.getAttribute('data-lang') === 'en' ? 'en' : 'de';
+    save(l); apply(l);
+  });
+
+  if (stored === 'en') apply('en');
+  // Startseite: eigener Umschalter im Hero → nach dem Laden der Seitenskripte auslösen
+  document.addEventListener('DOMContentLoaded', function () {
+    if (stored !== 'en') return;
+    var heroEn = document.querySelector('.hero-lang-btn[data-lang="en"]');
+    if (heroEn && !heroEn.classList.contains('is-active')) heroEn.click();
+  });
+  window.wpLang = function () { return document.documentElement.lang === 'en' ? 'en' : 'de'; };
+})();
+</script>

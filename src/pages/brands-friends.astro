@@ -6,7 +6,7 @@ const friends = [
     mono: 'IR',
     hidden: true, // vorerst ausgeblendet (René, 13.10.2026)
     name: 'Ina Ressi · istgleich',
-    tag: 'Coaching',
+    tag: 'Coaching', tagEn: 'Coaching', textEn: 'Live your potential — consulting, sport mental training, supervision and coaching for individuals and teams.',
     text: 'Lebe dein Potenzial — Beratung, Sportmentaltraining, Supervision und Coaching für Einzelne und Teams.',
     href: 'https://istgleich.at',
     host: 'istgleich.at',
@@ -14,7 +14,7 @@ const friends = [
   {
     mono: 'CS',
     name: 'Create-Sports',
-    tag: 'Hockeyshop',
+    tag: 'Hockeyshop', tagEn: 'Hockey shop', textEn: 'Hockey shop #1 — we live hockey.',
     text: 'Hockeyshop #1 — Wir leben Eishockey.',
     href: 'https://www.create-sports.com',
     host: 'create-sports.com',
@@ -22,7 +22,7 @@ const friends = [
   {
     mono: 'DS',
     name: 'Dubé Skills',
-    tag: 'Eishockey · Skills',
+    tag: 'Eishockey · Skills', tagEn: 'Hockey · Skills', textEn: 'Developing the future of hockey — professional player development at the highest level.',
     text: 'Developing the future of hockey — professionelle Spielerentwicklung auf höchstem Niveau.',
     href: 'https://dubeskills.eu/',
     host: 'dubeskills.eu',
@@ -30,7 +30,7 @@ const friends = [
   {
     mono: 'LK',
     name: 'Lukas Kirsch',
-    tag: 'Fotografie',
+    tag: 'Fotografie', tagEn: 'Photography', textEn: 'Photography & visual storytelling — the images behind Shift2Pro and on the ice.',
     text: 'Fotografie & Visual Storytelling — die Bilder hinter Shift2Pro und vom Eis.',
     href: 'https://www.cherrysgraph.de/',
     host: 'cherrysgraph.de',
@@ -39,7 +39,7 @@ const friends = [
     mono: 'MP',
     hidden: true, // nur Fotograf, kein B&F-Partner (René, 13.10.2026)
     name: 'Michael Pointvogel',
-    tag: 'Fotografie',
+    tag: 'Fotografie', tagEn: 'Photography', textEn: 'Photography — the studio portraits on this site.',
     text: 'Fotografie — die Studioporträts auf dieser Seite.',
     href: 'https://www.michaelpointvogel.com',
     host: 'michaelpointvogel.com',
@@ -47,7 +47,7 @@ const friends = [
   {
     mono: 'HU',
     name: 'Hedz.Up Store',
-    tag: 'Merch',
+    tag: 'Merch', tagEn: 'Merch', textEn: 'Casual streetwear with hockey DNA — hoodies, tees & caps.',
     text: 'Casual Streetwear mit Eishockey-DNA — Hoodies, Tees & Caps.',
     href: 'https://hedzup.store/',
     host: 'hedzup.store',
@@ -59,6 +59,7 @@ const friends = [
   active="brands-friends"
   title="Brands & Friends — René Wild · Wild Project"
   heading="Brands × Friends"
+  introEn="People and brands I love working with, again and again, and things I like and enjoy using."
   intro="Menschen und Brands, mit denen ich immer wieder gerne zusammenarbeite, und Dinge, die ich mag und gerne nutze."
   description="Brands & Friends von René Wild: Marken, Partner und Menschen, mit denen ich zusammenarbeite — Dubé Skills, Create-Sports, Lukas Kirsch, Hedz.Up."
 >
@@ -69,17 +70,17 @@ const friends = [
         <a class="bf-card" href={f.href} target="_blank" rel="noopener">
           <span class="bf-num">{String(i + 1).padStart(2, '0')}</span>
           <span class="bf-mono" aria-hidden="true">{f.mono}</span>
-          <span class="bf-tag">[ {f.tag} ]</span>
+          <span class="bf-tag" data-i18n-en={`[ ${f.tagEn} ]`}>[ {f.tag} ]</span>
           <span class="bf-name">{f.name}</span>
-          <span class="bf-text">{f.text}</span>
+          <span class="bf-text" data-i18n-en={f.textEn}>{f.text}</span>
           <span class="bf-link">{f.host} <span class="bf-arrow">↗</span></span>
         </a>
       ))}
     </div>
     <p class="bf-note">
-      <span class="bf-note-br">[</span> Transparenz <span class="bf-note-br">]</span>
-      Persönliche Empfehlungen: keine bezahlten Kooperationen, keine Provisionen, keine Affiliate-Links.
-      Bei Dubé Skills bin ich selbst als Development Coach tätig.
+      <span class="bf-note-br">[</span> <span data-i18n-en="Transparency">Transparenz</span> <span class="bf-note-br">]</span>
+      <span data-i18n-en="Personal recommendations: no paid partnerships, no commissions, no affiliate links. I work as a Development Coach at Dubé Skills myself.">Persönliche Empfehlungen: keine bezahlten Kooperationen, keine Provisionen, keine Affiliate-Links.
+      Bei Dubé Skills bin ich selbst als Development Coach tätig.</span>
     </p>
   </section>
 </TopicPage>

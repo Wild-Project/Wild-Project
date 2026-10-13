@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Footer from './Footer.astro';
+import LangToggle from './LangToggle.astro';
 
 interface Props {
   active: 'eishockey' | 'sport' | 'lifestyle' | 'brands-friends';
@@ -8,12 +9,14 @@ interface Props {
   heading: string;
   intro: string;
   description: string;
+  headingEn?: string;
+  introEn?: string;
 }
-const { active, title, heading, intro, description } = Astro.props;
+const { active, title, heading, intro, description, headingEn, introEn } = Astro.props;
 const areas = [
-  { id: 'eishockey', label: 'Eishockey', href: '/eishockey/', live: true },
-  { id: 'sport', label: 'Sport', href: '/sport/', live: false },
-  { id: 'lifestyle', label: 'Lifestyle', href: '/lifestyle/', live: false },
+  { id: 'eishockey', label: 'Eishockey', en: 'Ice Hockey', href: '/eishockey/', live: true },
+  { id: 'sport', label: 'Sport', en: 'Sport', href: '/sport/', live: false },
+  { id: 'lifestyle', label: 'Lifestyle', en: 'Lifestyle', href: '/lifestyle/', live: false },
 ];
 ---
 
@@ -21,29 +24,30 @@ const areas = [
   <div class="tp-bg" aria-hidden="true"></div>
   <div class="tp-page">
     <header class="tp-hero">
-      <a class="tp-home" href="/" aria-label="Zur Startseite">
+      <div class="tp-lang"><LangToggle /></div>
+      <a class="tp-home" href="/" aria-label="Zur Startseite" data-i18n-label="To the homepage">
         <img src="/basecamp/brand/logos/wp-monogram-orange.png" alt="" width="40" height="40" />
         <span><span class="tp-br">[</span> Wild Project <span class="tp-br">]</span></span>
       </a>
-      <h1 class="tp-title">{heading.split('×').map((part, i) => (<>{i > 0 && <span class="tp-dot">×</span>}{part}</>))}<span class="tp-dot">.</span></h1>
+      <h1 class="tp-title">{headingEn ? <span data-i18n-en={headingEn}>{heading}</span> : heading.split('×').map((part, i) => (<>{i > 0 && <span class="tp-dot">×</span>}{part}</>))}<span class="tp-dot">.</span></h1>
       <nav class="tp-nav" aria-label="Bereiche">
         {areas.map((a, i) => (
           <>
             {i > 0 && <span class="tp-nav-dot" aria-hidden="true">·</span>}
             {a.live || a.id === active
-              ? <a href={a.href} class:list={['tp-nav-link', { 'is-active': a.id === active }]} aria-current={a.id === active ? 'page' : undefined}>{a.label}</a>
-              : <span class="tp-nav-link tp-nav-link--off">{a.label}</span>}
+              ? <a href={a.href} class:list={['tp-nav-link', { 'is-active': a.id === active }]} aria-current={a.id === active ? 'page' : undefined} data-i18n-en={a.en}>{a.label}</a>
+              : <span class="tp-nav-link tp-nav-link--off" data-i18n-en={a.en}>{a.label}</span>}
           </>
         ))}
       </nav>
-      <p class="tp-intro">{intro}</p>
+      <p class="tp-intro" data-i18n-en={introEn}>{intro}</p>
     </header>
 
     <slot name="strip" />
 
     <main class="tp-main">
       <slot />
-      <a class="tp-back" href="/">← Zurück zu Wild Project</a>
+      <a class="tp-back" href="/" data-i18n-en="← Back to Wild Project">← Zurück zu Wild Project</a>
     </main>
 
     <Footer />
@@ -65,7 +69,10 @@ const areas = [
     padding: 56px 1.5rem 64px;
     display: flex; flex-direction: column; align-items: center;
     border-bottom: 1.5px solid rgba(252,80,0,0.55);
+    position: relative;
   }
+  .tp-lang { position: absolute; top: 24px; right: 28px; }
+  @media (max-width: 700px) { .tp-lang { top: 14px; right: 12px; } }
   .tp-home {
     display: inline-flex; align-items: center; gap: 12px;
     min-height: 44px;
