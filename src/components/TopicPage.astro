@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Footer from './Footer.astro';
 
 interface Props {
-  active: 'eishockey' | 'sport' | 'lifestyle';
+  active: 'eishockey' | 'sport' | 'lifestyle' | 'brands-friends';
   title: string;
   heading: string;
   intro: string;
@@ -25,7 +25,7 @@ const areas = [
         <img src="/basecamp/brand/logos/wp-monogram-orange.png" alt="" width="40" height="40" />
         <span><span class="tp-br">[</span> Wild Project <span class="tp-br">]</span></span>
       </a>
-      <h1 class="tp-title">{heading}<span class="tp-dot">.</span></h1>
+      <h1 class="tp-title">{heading.split('×').map((part, i) => (<>{i > 0 && <span class="tp-dot">×</span>}{part}</>))}<span class="tp-dot">.</span></h1>
       <nav class="tp-nav" aria-label="Bereiche">
         {areas.map((a, i) => (
           <>

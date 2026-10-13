@@ -1,0 +1,147 @@
+---
+import TopicPage from '../components/TopicPage.astro';
+
+const friends = [
+  {
+    mono: 'DS',
+    name: 'Dubé Skills',
+    tag: 'Eishockey · Skills',
+    text: 'Developing the future of hockey — professionelle Spielerentwicklung auf höchstem Niveau.',
+    href: 'https://dubeskills.eu/',
+    host: 'dubeskills.eu',
+  },
+  {
+    mono: 'CS',
+    name: 'Create-Sports',
+    tag: 'Hockeyshop',
+    text: 'Hockeyshop #1 — Wir leben Eishockey.',
+    href: 'https://www.create-sports.com',
+    host: 'create-sports.com',
+  },
+  {
+    mono: 'LK',
+    name: 'Lukas Kirsch',
+    tag: 'Fotografie',
+    text: 'Fotografie & Visual Storytelling — die Bilder hinter Shift2Pro und vom Eis.',
+    href: 'https://www.cherrysgraph.de/',
+    host: 'cherrysgraph.de',
+  },
+  {
+    mono: 'MP',
+    name: 'Michael Pointvogel',
+    tag: 'Fotografie',
+    text: 'Fotografie — die Studioporträts auf dieser Seite.',
+    href: 'https://www.michaelpointvogel.com',
+    host: 'michaelpointvogel.com',
+  },
+  {
+    mono: 'IR',
+    name: 'Ina Ressi · istgleich',
+    tag: 'Coaching',
+    text: 'Lebe dein Potenzial — Beratung, Sportmentaltraining, Supervision und Coaching für Einzelne und Teams.',
+    href: 'https://istgleich.at',
+    host: 'istgleich.at',
+  },
+  {
+    mono: 'HU',
+    name: 'Hedz.Up Store',
+    tag: 'Merch',
+    text: 'Casual Streetwear mit Eishockey-DNA — Hoodies, Tees & Caps.',
+    href: 'https://hedzup.store/',
+    host: 'hedzup.store',
+  },
+];
+---
+
+<TopicPage
+  active="brands-friends"
+  title="Brands & Friends — René Wild · Wild Project"
+  heading="Brands × Friends"
+  intro="Marken, mit denen ich zusammenarbeite, und Dinge, die ich mag und gerne weitergebe."
+  description="Brands & Friends von René Wild: Marken, Partner und Menschen, mit denen ich zusammenarbeite — Dubé Skills, Create-Sports, Lukas Kirsch, Michael Pointvogel, Ina Ressi (istgleich), Hedz.Up."
+>
+  <section class="tp-section">
+    <div class="tp-section-head">Brands × Friends</div>
+    <div class="bf-grid">
+      {friends.map((f, i) => (
+        <a class="bf-card" href={f.href} target="_blank" rel="noopener">
+          <span class="bf-num">{String(i + 1).padStart(2, '0')}</span>
+          <span class="bf-mono" aria-hidden="true">{f.mono}</span>
+          <span class="bf-tag">[ {f.tag} ]</span>
+          <span class="bf-name">{f.name}</span>
+          <span class="bf-text">{f.text}</span>
+          <span class="bf-link">{f.host} <span class="bf-arrow">↗</span></span>
+        </a>
+      ))}
+    </div>
+  </section>
+</TopicPage>
+
+<style>
+  .bf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
+    gap: 16px;
+  }
+  .bf-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 280px;
+    padding: 24px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.09);
+    color: rgba(255,255,255,0.78);
+    text-decoration: none;
+    overflow: hidden;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s cubic-bezier(.2,.7,.2,1);
+  }
+  .bf-card:hover, .bf-card:focus-visible {
+    border-color: rgba(252,80,0,0.6);
+    background: rgba(252,80,0,0.05);
+    transform: translateY(-3px);
+    outline: none;
+  }
+  .bf-num {
+    position: absolute; top: 18px; right: 20px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,0.4);
+  }
+  .bf-mono {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: transparent;
+    -webkit-text-stroke: 1.2px rgba(255,255,255,0.35);
+    margin-bottom: 18px;
+    transition: color 0.3s, -webkit-text-stroke-color 0.3s;
+  }
+  .bf-card:hover .bf-mono { color: var(--orange); -webkit-text-stroke-color: var(--orange); }
+  .bf-tag {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--orange);
+  }
+  .bf-name {
+    font-family: 'Poppins', sans-serif; font-weight: 600;
+    font-size: 22px; line-height: 1.2; color: #FFFFFF;
+  }
+  .bf-text {
+    font-family: 'Poppins', sans-serif; font-weight: 300;
+    font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.72);
+    flex: 1;
+  }
+  .bf-link {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11.5px; letter-spacing: 1.5px; color: rgba(255,255,255,0.6);
+  }
+  .bf-arrow { display: inline-block; color: var(--orange); transition: transform 0.25s; }
+  .bf-card:hover .bf-arrow { transform: translate(3px, -3px); }
+  @media (max-width: 700px) {
+    .bf-card { min-height: 0; }
+    .bf-mono { font-size: 52px; margin-bottom: 10px; }
+  }
+</style>
