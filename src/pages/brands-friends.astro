@@ -75,6 +75,11 @@ const friends = [
         </a>
       ))}
     </div>
+    <p class="bf-note">
+      <span class="bf-note-br">[</span> Transparenz <span class="bf-note-br">]</span>
+      Persönliche Empfehlungen: keine bezahlten Kooperationen, keine Provisionen, keine Affiliate-Links.
+      Bei Dubé Skills bin ich selbst als Development Coach tätig.
+    </p>
   </section>
 </TopicPage>
 
@@ -141,6 +146,14 @@ const friends = [
   }
   .bf-arrow { display: inline-block; color: var(--orange); transition: transform 0.25s; }
   .bf-card:hover .bf-arrow { transform: translate(3px, -3px); }
+  .bf-note {
+    margin: 28px 0 0;
+    max-width: 720px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11.5px; line-height: 1.8; letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.5);
+  }
+  .bf-note-br { color: var(--orange); }
   @media (max-width: 700px) {
     .bf-card { min-height: 0; }
     .bf-mono { font-size: 52px; margin-bottom: 10px; }
