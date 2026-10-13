@@ -55,6 +55,23 @@ import CookieBanner from '../components/CookieBanner.astro';
             data-text-de="Bin immer offen für spannende Collaborations oder einen Austausch über neue Projekte — schreib mir einfach."
             data-text-en="Always open to exciting collaborations or a chat about new projects — just hit me up."
           ></p>
+          <div class="about-cv">
+            <div class="about-cv-prompt" aria-hidden="true">
+              <span class="about-prompt-glyph">$</span>
+              <span class="about-prompt-cmd">ls ./coaches-cv/</span>
+            </div>
+            <div class="about-cv-links">
+              <a class="about-cv-link" href="/downloads/coaches-cv-rene-wild-de.pdf" download hreflang="de" type="application/pdf">
+                <span class="about-cv-label"><span class="about-cv-br">[</span> Coaches-CV · Deutsch <span class="about-cv-br">]</span></span>
+                <span class="about-cv-meta">↓ PDF</span>
+              </a>
+              <a class="about-cv-link" href="/downloads/coach-cv-rene-wild-en.pdf" download hreflang="en" type="application/pdf">
+                <span class="about-cv-label"><span class="about-cv-br">[</span> Coach CV · English <span class="about-cv-br">]</span></span>
+                <span class="about-cv-meta">↓ PDF</span>
+              </a>
+            </div>
+            <p class="about-cv-note" data-text-de="A4 · 4 Seiten · Stand 10/2026" data-text-en="A4 · 4 pages · as of 10/2026">A4 · 4 Seiten · Stand 10/2026</p>
+          </div>
         </div>
         <div class="about-close-wrap">
           <button
@@ -233,6 +250,65 @@ import CookieBanner from '../components/CookieBanner.astro';
     border-top: 1px solid rgba(252,80,0,0.18);
     color: rgba(255,255,255,0.85);
   }
+  .about-cv {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(255,255,255,0.10);
+  }
+  .about-cv-prompt {
+    font-size: 10.5px;
+    letter-spacing: 1.2px;
+    margin-bottom: 14px;
+  }
+  .about-cv-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .about-cv-link {
+    flex: 1 1 230px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    min-height: 44px;
+    padding: 0 16px;
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(255,255,255,0.88);
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.02);
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .about-cv-br { color: var(--orange); }
+  .about-cv-meta { color: rgba(255,255,255,0.45); white-space: nowrap; }
+  .about-cv-link:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+    background: rgba(252,80,0,0.06);
+  }
+  .about-cv-link:hover .about-cv-meta { color: var(--orange); }
+  .about-cv-link:focus-visible {
+    outline: 2px solid var(--orange);
+    outline-offset: 2px;
+  }
+  .about-cv-note {
+    margin: 12px 0 0;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.4);
+  }
+  :global(body.light) .about-cv { border-top-color: rgba(0,0,0,0.10); }
+  :global(body.light) .about-cv-link {
+    color: rgba(0,0,0,0.8);
+    border-color: rgba(0,0,0,0.14);
+    background: rgba(255,255,255,0.6);
+  }
+  :global(body.light) .about-cv-meta { color: rgba(0,0,0,0.45); }
+  :global(body.light) .about-cv-link:hover { color: var(--orange); border-color: var(--orange); }
+  :global(body.light) .about-cv-note { color: rgba(0,0,0,0.45); }
   :global(body.light) .about-line--cta {
     color: rgba(0,0,0,0.78);
     border-top-color: rgba(252,80,0,0.25);
@@ -557,6 +633,10 @@ import CookieBanner from '../components/CookieBanner.astro';
     .about-terminal { padding: 14px 16px 16px; font-size: 11.5px; line-height: 1.7; }
     .about-terminal-prompt { font-size: 9.5px; margin-bottom: 12px; padding-bottom: 10px; letter-spacing: 1px; }
     .about-line { margin-bottom: 12px; }
+    .about-cv { margin-top: 18px; padding-top: 14px; }
+    .about-cv-prompt { font-size: 9.5px; margin-bottom: 12px; letter-spacing: 1px; }
+    .about-cv-links { flex-direction: column; gap: 8px; }
+    .about-cv-link { width: 100%; box-sizing: border-box; font-size: 10.5px; padding: 0 14px; min-height: 48px; }
 
     /* Projekte (mobile) */
     .projects-section { margin-top: 44px; }

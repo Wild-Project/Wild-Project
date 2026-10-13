@@ -1,0 +1,197 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="René Wild — Wild Project"
+  description="René Wild · Eishockey · Sport · Lifestyle. E-Mail, Website, LinkedIn und Coaches-CV auf einen Blick."
+  path="/card/"
+  image="/wp-logo.png"
+>
+  <main class="card">
+    <div class="card-top">
+      <p class="card-label"><span class="br">[</span> Wild Project <span class="br">]</span></p>
+
+      <img class="card-portrait" src="/brand-assets/rene-wild.png" alt="Porträt René Wild" width="128" height="128" />
+
+      <h1 class="card-name">RENÉ <span>WILD</span></h1>
+      <p class="card-tagline">Eishockey <span class="dot">·</span> Sport <span class="dot">·</span> Lifestyle</p>
+
+      <p class="card-intro">Ich leite den Nachwuchs der Starbulls Rosenheim und entwickle Spieler, Trainer und eigene Projekte.</p>
+
+      <nav class="card-links" aria-label="Kontakt">
+        <a class="card-link" href="mailto:rene@wildproject.pro">
+          <span><span class="br">[</span> E-Mail <span class="br">]</span></span>
+          <span class="card-link-meta">rene@wildproject.pro</span>
+        </a>
+        <a class="card-link" href="/">
+          <span><span class="br">[</span> Website <span class="br">]</span></span>
+          <span class="card-link-meta">wildproject.pro</span>
+        </a>
+        <a class="card-link" href="https://www.linkedin.com/in/ren%C3%A9-wild-95428b314" target="_blank" rel="noopener">
+          <span><span class="br">[</span> LinkedIn <span class="br">]</span></span>
+          <span class="card-link-meta">René Wild</span>
+        </a>
+        <div class="card-cv">
+          <a class="card-link" href="/downloads/coaches-cv-rene-wild-de.pdf" download hreflang="de" type="application/pdf">
+            <span class="nowrap"><span class="br">[</span> CV · DE <span class="br">]</span></span>
+            <span class="card-link-meta">↓</span>
+          </a>
+          <a class="card-link" href="/downloads/coach-cv-rene-wild-en.pdf" download hreflang="en" type="application/pdf">
+            <span class="nowrap"><span class="br">[</span> CV · EN <span class="br">]</span></span>
+            <span class="card-link-meta">↓</span>
+          </a>
+        </div>
+        <a class="card-save" href="/rene-wild.vcf" download>Kontakt speichern <span class="br">↓</span></a>
+      </nav>
+    </div>
+
+    <footer class="card-foot">
+      <span class="card-servus">Servus.</span>
+      <span class="card-coords">47.857° N <span class="br">·</span> 12.118° E</span>
+    </footer>
+  </main>
+</Layout>
+
+<style>
+  .card {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: #F5F5F3;
+    color: #050505;
+    font-family: 'Poppins', -apple-system, sans-serif;
+  }
+  .card-top {
+    flex: 1;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 32px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .br, .dot { color: #FC5000; }
+  .card-label,
+  .card-tagline,
+  .card-link,
+  .card-save,
+  .card-coords {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  .card-label {
+    margin: 0;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #4A4A4A;
+  }
+  .card-portrait {
+    width: 128px;
+    height: 128px;
+    margin: 34px 0 18px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow:
+      0 0 0 3px #FC5000,
+      0 0 0 12px rgba(252,80,0,0.22),
+      0 0 0 22px rgba(252,80,0,0.11),
+      0 0 0 32px rgba(252,80,0,0.05);
+  }
+  .card-name {
+    margin: 10px 0 0;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -1.2px;
+  }
+  .card-name span { color: #FC5000; }
+  .card-tagline {
+    margin: 0;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #4A4A4A;
+  }
+  .card-intro {
+    margin: 0;
+    max-width: 320px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .card-links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .card-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    box-sizing: border-box;
+    padding: 0 18px;
+    border: 1px solid rgba(5,5,5,0.14);
+    background: #FFFFFF;
+    color: #050505;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .card-link-meta { color: #4A4A4A; white-space: nowrap; }
+  .nowrap { white-space: nowrap; }
+  .card-link:hover { border-color: #FC5000; color: #FC5000; }
+  .card-link:focus-visible, .card-save:focus-visible { outline: 2px solid #FC5000; outline-offset: 2px; }
+  .card-cv {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .card-save {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    min-height: 52px;
+    background: #050505;
+    color: #FFFFFF;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .card-save:hover { background: #1A1A1A; }
+  .card-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px 26px;
+    background-color: #050505;
+    background-image: radial-gradient(circle, rgba(228,228,228,0.14) 1px, transparent 1.4px);
+    background-size: 14px 14px;
+  }
+  .card-servus {
+    font-family: 'Caveat', cursive;
+    font-size: 26px;
+    color: #FC5000;
+  }
+  .card-coords {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: #BDBDBD;
+  }
+  @media (max-width: 360px) {
+    .card-name { font-size: 34px; }
+    .card-link { padding: 0 14px; font-size: 11px; }
+  }
+</style>
