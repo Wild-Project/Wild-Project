@@ -4,6 +4,7 @@ import TopicPage from '../components/TopicPage.astro';
 const friends = [
   {
     mono: 'IR',
+    hidden: true, // vorerst ausgeblendet (René, 13.10.2026)
     name: 'Ina Ressi · istgleich',
     tag: 'Coaching',
     text: 'Lebe dein Potenzial — Beratung, Sportmentaltraining, Supervision und Coaching für Einzelne und Teams.',
@@ -58,12 +59,12 @@ const friends = [
   title="Brands & Friends — René Wild · Wild Project"
   heading="Brands × Friends"
   intro="Menschen & Brands, mit denen ich zusammenarbeite, und Dinge, die ich mag und gerne weitergebe."
-  description="Brands & Friends von René Wild: Marken, Partner und Menschen, mit denen ich zusammenarbeite — Dubé Skills, Create-Sports, Lukas Kirsch, Michael Pointvogel, Ina Ressi (istgleich), Hedz.Up."
+  description="Brands & Friends von René Wild: Marken, Partner und Menschen, mit denen ich zusammenarbeite — Dubé Skills, Create-Sports, Lukas Kirsch, Michael Pointvogel, Hedz.Up."
 >
   <section class="tp-section">
     <div class="tp-section-head">Brands × Friends</div>
     <div class="bf-grid">
-      {friends.map((f, i) => (
+      {friends.filter((f) => !f.hidden).map((f, i) => (
         <a class="bf-card" href={f.href} target="_blank" rel="noopener">
           <span class="bf-num">{String(i + 1).padStart(2, '0')}</span>
           <span class="bf-mono" aria-hidden="true">{f.mono}</span>
