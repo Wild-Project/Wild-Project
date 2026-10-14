@@ -88,16 +88,18 @@ const friends = [
 <style>
   .bf-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
   }
+  @media (max-width: 1000px) { .bf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .bf-grid { grid-template-columns: 1fr; } }
   .bf-card {
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    min-height: 280px;
-    padding: 24px;
+    min-height: 300px;
+    padding: 22px 20px;
     background: rgba(255,255,255,0.025);
     border: 1px solid rgba(255,255,255,0.09);
     color: rgba(255,255,255,0.78);
@@ -119,7 +121,7 @@ const friends = [
   .bf-mono {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 64px;
+    font-size: 56px;
     line-height: 1;
     letter-spacing: -2px;
     color: transparent;
@@ -130,21 +132,21 @@ const friends = [
   .bf-card:hover .bf-mono { color: var(--orange); -webkit-text-stroke-color: var(--orange); }
   .bf-tag {
     font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--orange);
+    font-size: 10.5px; letter-spacing: 1.4px; text-transform: uppercase;
+    color: var(--orange); white-space: nowrap;
   }
   .bf-name {
     font-family: 'Poppins', sans-serif; font-weight: 600;
-    font-size: 22px; line-height: 1.2; color: #FFFFFF;
+    font-size: 20px; line-height: 1.2; color: #FFFFFF;
   }
   .bf-text {
     font-family: 'Poppins', sans-serif; font-weight: 300;
-    font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.72);
+    font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.72);
     flex: 1;
   }
   .bf-link {
     font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 11.5px; letter-spacing: 1.5px; color: rgba(255,255,255,0.6);
+    font-size: 11px; letter-spacing: 1.2px; color: rgba(255,255,255,0.6);
   }
   .bf-arrow { display: inline-block; color: var(--orange); transition: transform 0.25s; }
   .bf-card:hover .bf-arrow { transform: translate(3px, -3px); }
