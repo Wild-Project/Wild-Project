@@ -15,7 +15,6 @@ import TopicPage from '../components/TopicPage.astro';
     <div class="tp-strip-track">
       <figure class="tp-shot" data-credit="Foto: Lukas Kirsch" data-i18n-credit="Photo: Lukas Kirsch"><img src="/images/eishockey/coach-eis-1.jpg" alt="René Wild auf dem Eis mit Schläger" data-i18n-alt="René Wild on the ice with his stick" width="734" height="1100" loading="lazy" /></figure>
       <figure class="tp-shot" data-credit="Foto: Lukas Kirsch" data-i18n-credit="Photo: Lukas Kirsch"><img src="/images/eishockey/coach-dube-board.jpg" alt="René Wild erklärt eine Übung an der Bande, Dubé Skills" data-i18n-alt="René Wild explaining a drill at the boards, Dubé Skills" width="724" height="1086" loading="lazy" /></figure>
-      <figure class="tp-shot" data-credit="Foto: Lukas Kirsch" data-i18n-credit="Photo: Lukas Kirsch"><img src="/images/eishockey/coach-whiteboard.jpg" alt="René Wild erklärt eine Übung am Taktikboard" data-i18n-alt="René Wild explaining a drill on the tactics board" width="717" height="1100" loading="lazy" /></figure>
       <figure class="tp-shot"><img src="/images/eishockey/coach-bande.jpg" alt="René Wild coacht hinter der Bande" data-i18n-alt="René Wild coaching behind the bench" width="800" height="533" loading="lazy" /></figure>
       <figure class="tp-shot" data-credit="Foto: Lukas Kirsch" data-i18n-credit="Photo: Lukas Kirsch"><img src="/images/eishockey/coach-dube-team.jpg" alt="Dubé-Skills-Trainerteam mit Spieler auf dem Eis" data-i18n-alt="Dubé Skills coaching staff with a player on the ice" width="724" height="1086" loading="lazy" /></figure>
       <figure class="tp-shot" data-credit="Foto: Michael Pointvogel" data-i18n-credit="Photo: Michael Pointvogel"><img src="/images/eishockey/coach-schlaeger.jpg" alt="René Wild mit Schläger und Handschuhen" data-i18n-alt="René Wild with stick and gloves" width="870" height="1100" loading="lazy" /></figure>
@@ -23,7 +22,6 @@ import TopicPage from '../components/TopicPage.astro';
       <span class="tp-strip-dup" aria-hidden="true">
       <figure class="tp-shot" data-credit="Foto: Lukas Kirsch" data-i18n-credit="Photo: Lukas Kirsch"><img src="/images/eishockey/coach-eis-1.jpg" alt="" width="734" height="1100" loading="lazy" /></figure>
       <figure class="tp-shot" data-credit="Foto: Lukas Kirsch" data-i18n-credit="Photo: Lukas Kirsch"><img src="/images/eishockey/coach-dube-board.jpg" alt="" width="724" height="1086" loading="lazy" /></figure>
-      <figure class="tp-shot" data-credit="Foto: Lukas Kirsch" data-i18n-credit="Photo: Lukas Kirsch"><img src="/images/eishockey/coach-whiteboard.jpg" alt="" width="717" height="1100" loading="lazy" /></figure>
       <figure class="tp-shot"><img src="/images/eishockey/coach-bande.jpg" alt="" width="800" height="533" loading="lazy" /></figure>
       <figure class="tp-shot" data-credit="Foto: Lukas Kirsch" data-i18n-credit="Photo: Lukas Kirsch"><img src="/images/eishockey/coach-dube-team.jpg" alt="" width="724" height="1086" loading="lazy" /></figure>
       <figure class="tp-shot" data-credit="Foto: Michael Pointvogel" data-i18n-credit="Photo: Michael Pointvogel"><img src="/images/eishockey/coach-schlaeger.jpg" alt="" width="870" height="1100" loading="lazy" /></figure>
@@ -31,6 +29,18 @@ import TopicPage from '../components/TopicPage.astro';
       </span>
     </div>
   </div>
+
+  <figure class="eh-banner">
+    <picture>
+      <source media="(max-width: 700px)" srcset="/images/eishockey/banner-taktiktafel-mobil.jpg" />
+      <img src="/images/eishockey/banner-taktiktafel.jpg" alt="René Wild erklärt eine Übung am Taktikboard" data-i18n-alt="René Wild explaining a drill on the tactics board" width="1680" height="560" loading="lazy" />
+    </picture>
+    <figcaption class="eh-banner-text">
+      <span class="eh-banner-name">René <span class="eh-banner-accent">Wild</span></span>
+      <span class="eh-banner-role" data-i18n-en="Head of Youth Hockey · Head of Coaches">Sportlicher Leiter · Head of Coaches</span>
+    </figcaption>
+    <span class="eh-banner-credit" data-i18n-en="Photo: Lukas Kirsch">Foto: Lukas Kirsch</span>
+  </figure>
 
   <section class="tp-section">
     <div class="tp-section-head" data-i18n-en="01 · Current">01 · Aktuell</div>
@@ -90,3 +100,40 @@ import TopicPage from '../components/TopicPage.astro';
     </a>
   </section>
 </TopicPage>
+
+<style>
+  .eh-banner {
+    position: relative; margin: 0 0 56px; overflow: hidden;
+    background: #050505; border: 1px solid rgba(252,80,0,0.35);
+  }
+  .eh-banner img { display: block; width: 100%; height: auto; }
+  .eh-banner-text {
+    position: absolute; right: 6%; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 14px; color: #fff;
+  }
+  .eh-banner-name {
+    font-family: 'Poppins', sans-serif; font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: -1px; line-height: 1;
+    text-transform: uppercase;
+  }
+  .eh-banner-accent { color: var(--orange); }
+  .eh-banner-role {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11.5px; letter-spacing: 1.6px; text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+  }
+  .eh-banner-credit {
+    position: absolute; left: 10px; bottom: 8px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 9px; letter-spacing: 1px; text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  @media (max-width: 700px) {
+    .eh-banner { margin-bottom: 44px; }
+    .eh-banner-text {
+      position: static; transform: none; padding: 20px 18px 22px; gap: 10px;
+      border-top: 1px solid rgba(252,80,0,0.35);
+    }
+    .eh-banner-credit { bottom: auto; top: 8px; }
+  }
+</style>
