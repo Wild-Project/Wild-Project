@@ -36,8 +36,9 @@ import TopicPage from '../components/TopicPage.astro';
       <img src="/images/eishockey/banner-taktiktafel.jpg" alt="René Wild erklärt eine Übung am Taktikboard" data-i18n-alt="René Wild explaining a drill on the tactics board" width="1680" height="560" loading="lazy" />
     </picture>
     <figcaption class="eh-banner-text">
-      <span class="eh-banner-name">René <span class="eh-banner-accent">Wild</span></span>
-      <span class="eh-banner-role" data-i18n-en="Head of Youth Hockey · Head of Coaches">Sportlicher Leiter · Head of Coaches</span>
+      <span class="eh-banner-label">Starbulls Rosenheim e.V. · <span data-i18n-en="since 05/2026">seit 05/2026</span></span>
+      <span class="eh-banner-name"><span data-i18n-en="Head of Youth Hockey">Sportlicher Leiter</span><br /><span class="eh-banner-accent">Head of Coaches</span></span>
+      <span class="eh-banner-label" data-i18n-en="Youth hockey, U7 to U20">Nachwuchs U7 bis U20</span>
     </figcaption>
     <span class="eh-banner-credit" data-i18n-en="Photo: Lukas Kirsch">Foto: Lukas Kirsch</span>
   </figure>
@@ -45,11 +46,6 @@ import TopicPage from '../components/TopicPage.astro';
   <section class="tp-section">
     <div class="tp-section-head" data-i18n-en="01 · Current">01 · Aktuell</div>
     <div class="tp-grid">
-      <div class="tp-card">
-        <span class="tp-card-label"><span data-i18n-en="since 05/2026">seit 05/2026</span><span class="tp-status">Starbulls Rosenheim</span></span>
-        <h2 class="tp-card-title" data-i18n-en="Head of Youth Hockey · Head of Coaches">Sportlicher Leiter · Head of Coaches</h2>
-        <p class="tp-card-text" data-i18n-en="Youth hockey, U7 to U20">Nachwuchs U7 bis U20</p>
-      </div>
       <div class="tp-card">
         <span class="tp-card-label"><span data-i18n-en="since 05/2023">seit 05/2023</span><span class="tp-status">Starbulls Rosenheim</span></span>
         <h2 class="tp-card-title">U17 Head Coach &amp; Development Coach</h2>
@@ -108,15 +104,20 @@ import TopicPage from '../components/TopicPage.astro';
   }
   .eh-banner img { display: block; width: 100%; height: auto; }
   .eh-banner-text {
-    position: absolute; right: 6%; top: 50%; transform: translateY(-50%);
+    position: absolute; left: 60%; top: 50%; transform: translateY(-50%);
     display: flex; flex-direction: column; gap: 14px; color: #fff;
   }
   .eh-banner-name {
     font-family: 'Poppins', sans-serif; font-weight: 700;
-    font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: -1px; line-height: 1;
+    font-size: clamp(1.15rem, 2.6vw, 1.85rem); letter-spacing: -0.5px; line-height: 1.1; white-space: nowrap;
     text-transform: uppercase;
   }
   .eh-banner-accent { color: var(--orange); }
+  .eh-banner-label {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11.5px; letter-spacing: 1.6px; text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
   .eh-banner-role {
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     font-size: 11.5px; letter-spacing: 1.6px; text-transform: uppercase;
@@ -135,5 +136,6 @@ import TopicPage from '../components/TopicPage.astro';
       border-top: 1px solid rgba(252,80,0,0.35);
     }
     .eh-banner-credit { bottom: auto; top: 8px; }
+    .eh-banner-name { font-size: 1.5rem; }
   }
 </style>
