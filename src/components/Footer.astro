@@ -20,12 +20,13 @@
   <div class="ft-bottom">
     <a class="ft-brand" href="/" aria-label="Zur Startseite" data-i18n-label="To the homepage">
       <img src="/wp-logo.png" alt="" width="28" height="28" />
-      <span>© 2026 Wild Project</span>
     </a>
+    <span class="ft-copy">© 2026 Wild Project</span>
     <nav class="ft-legal" aria-label="Rechtliches">
       <a href="/impressum" data-i18n-en="Legal notice">Impressum</a>
       <a href="/datenschutz" data-i18n-en="Privacy">Datenschutz</a>
     </nav>
+    <span class="ft-break" aria-hidden="true"></span>
     <span class="ft-place">Rosenheim <span class="ft-dim">· 47.8561°N 12.1289°E</span></span>
     <span class="ft-badge"><span class="ft-br">[</span> No Cookies · Anonymous Stats · No BS <span class="ft-br">]</span></span>
   </div>
@@ -118,7 +119,7 @@
     letter-spacing: 1.2px;
     color: rgba(255,255,255,0.45);
   }
-  .ft-brand { display: inline-flex; align-items: center; gap: 12px; }
+  .ft-brand { display: inline-flex; align-items: center; margin-right: -14px; }
   .ft-brand img { width: 28px; height: 28px; opacity: 0.9; transition: transform 0.3s; }
   .ft-brand:hover img { transform: rotate(-6deg); }
   .ft-legal { display: flex; gap: 20px; }
@@ -127,12 +128,19 @@
   .ft-place { text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.6); }
   .ft-dim { color: rgba(255,255,255,0.35); text-transform: none; letter-spacing: 1px; }
   .ft-badge { margin-left: auto; }
+  .ft-break { display: none; }
 
   @media (max-width: 860px) {
     .footer { padding: 0 1.25rem 24px; }
     .ft-cta { padding: 48px 0 44px; }
-    .ft-bottom { flex-direction: column; text-align: center; gap: 14px; }
-    .ft-badge { margin-left: 0; }
+    .ft-bottom { justify-content: center; text-align: center; gap: 2px 20px; }
+    .ft-brand { order: 1; margin-right: 0; }
+    .ft-legal { order: 2; }
+    .ft-break { order: 3; display: block; flex-basis: 100%; height: 0; }
+    .ft-copy  { order: 4; }
+    .ft-place { order: 5; }
+    .ft-dim { display: none; }
+    .ft-badge { order: 6; flex-basis: 100%; margin: 8px 0 0; }
     .ft-legal a { min-height: 40px; }
   }
 </style>
