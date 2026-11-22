@@ -2,11 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
+
+// Projekte-Bereich (Shift2Pro) vorerst ausgeblendet — zum Einschalten auf true setzen
+const SHOW_PROJECTS = false;
 ---
 
 <Layout
   title="Wild Project — René Wild · Eishockey · Sport · Lifestyle"
-  description="René Wild — Sportlicher Leiter Nachwuchs und Head Coach U17 der Starbulls Rosenheim. Wild Project ist meine Plattform für eigene Projekte rund um Eishockey, Sport und Lifestyle, allen voran der Shift2Pro Podcast. Coaches-CV als PDF."
+  description="Wild Project — Plattform für Projekte rund um Eishockey, Sport und Lifestyle. Gegründet von René Wild, Sportlicher Leiter Nachwuchs der Starbulls Rosenheim. Coaches-CV als PDF."
   path="/"
   image="/wp-logo.png"
 >
@@ -26,35 +29,35 @@ import Footer from '../components/Footer.astro';
       >
         <div class="about-head">
           <span class="about-eyebrow-line"></span>
-          <span class="about-eyebrow" id="about-heading">Über mich</span>
+          <span class="about-eyebrow" id="about-heading">Über Wild Project</span>
           <span class="about-eyebrow-line"></span>
         </div>
         <div class="about-terminal" role="region" aria-label="Biografie">
           <div class="about-terminal-prompt" aria-hidden="true">
             <span class="about-prompt-glyph">[</span>
-            <span class="about-prompt-cmd" data-text-de="01 · Profil" data-text-en="01 · Profile">01 · Profil</span>
+            <span class="about-prompt-cmd" data-text-de="01 · Plattform" data-text-en="01 · Platform">01 · Plattform</span>
             <span class="about-prompt-glyph">]</span>
           </div>
           <p
             class="about-line"
-            data-text-de="Servus, ich bin René Wild — stolzer Papa, Nachwuchs-Eishockey-Trainer und Sportlicher Leiter Nachwuchs der Starbulls Rosenheim. Wild Project ist mein Zuhause, die Plattform, von der alles ausgeht: Eines nach dem anderen, jedes mit eigener Handschrift."
-            data-text-en="Hey, I'm René Wild — proud dad, youth hockey coach and Head of Youth Hockey at the Starbulls Rosenheim. Wild Project is my home base — the platform where it all starts: one project at a time, each with its own signature."
-          >Servus, ich bin René Wild — stolzer Papa, Nachwuchs-Eishockey-Trainer und Sportlicher Leiter Nachwuchs der Starbulls Rosenheim. Wild Project ist mein Zuhause, die Plattform, von der alles ausgeht: Eines nach dem anderen, jedes mit eigener Handschrift.</p>
+            data-text-de="Wild Project ist die Plattform hinter Projekten rund um Eishockey, Sport und Lifestyle — eines nach dem anderen, jedes mit eigener Handschrift."
+            data-text-en="Wild Project is the platform behind projects in hockey, sport and lifestyle — one at a time, each with its own signature."
+          >Wild Project ist die Plattform hinter Projekten rund um Eishockey, Sport und Lifestyle — eines nach dem anderen, jedes mit eigener Handschrift.</p>
           <p
             class="about-line"
-            data-text-de="Eishockey prägt einen großen Teil meines Lebens. Nicht nur, weil ich fast täglich am Eis stehe — sondern weil ich den Sport liebe. Das Spiel, die Menschen, die Geschichten, der Lifestyle drumherum."
-            data-text-en="Hockey runs through a big part of my life. Not just because I'm on the ice almost every day — but because I love the sport. The game, the people, the stories, the lifestyle around it."
-          >Eishockey prägt einen großen Teil meines Lebens. Nicht nur, weil ich fast täglich am Eis stehe — sondern weil ich den Sport liebe. Das Spiel, die Menschen, die Geschichten, der Lifestyle drumherum.</p>
+            data-text-de="Im Mittelpunkt steht das Eishockey: Nachwuchsentwicklung, Vereins- und Ausbildungsstrukturen, sportliche Konzepte und Camps. Dazu kommen Projekte aus Sport und Design, die zu dieser Haltung passen."
+            data-text-en="Hockey is at the core: youth development, club and coaching structures, sport concepts and camps. Alongside come projects in sport and design that share the same mindset."
+          >Im Mittelpunkt steht das Eishockey: Nachwuchsentwicklung, Vereins- und Ausbildungsstrukturen, sportliche Konzepte und Camps. Dazu kommen Projekte aus Sport und Design, die zu dieser Haltung passen.</p>
           <p
             class="about-line"
-            data-text-de="Genau zwischen Eishalle und Leben verwirkliche ich meine Ideen — Schritt für Schritt, kein Masterplan."
-            data-text-en="Right between the rink and real life is where I bring my ideas to life — step by step, no master plan."
-          >Genau zwischen Eishalle und Leben verwirkliche ich meine Ideen — Schritt für Schritt, kein Masterplan.</p>
+            data-text-de="Gegründet von René Wild, Sportlicher Leiter Nachwuchs der Starbulls Rosenheim."
+            data-text-en="Founded by René Wild, Head of Youth Hockey at the Starbulls Rosenheim."
+          >Gegründet von René Wild, Sportlicher Leiter Nachwuchs der Starbulls Rosenheim.</p>
           <p
             class="about-line about-line--cta"
-            data-text-de="Bin immer offen für spannende Collaborations oder einen Austausch über neue Projekte — schreib mir einfach."
-            data-text-en="Always open to exciting collaborations or a chat about new projects — just hit me up."
-          >Bin immer offen für spannende Collaborations oder einen Austausch über neue Projekte — schreib mir einfach.</p>
+            data-text-de="Offen für Collaborations und neue Projekte — schreib uns."
+            data-text-en="Open to collaborations and new projects — get in touch."
+          >Offen für Collaborations und neue Projekte — schreib uns.</p>
           <div class="about-stats">
             <div class="about-cv-prompt" aria-hidden="true">
               <span class="about-prompt-glyph">[</span>
@@ -90,12 +93,13 @@ import Footer from '../components/Footer.astro';
           <button
             type="button"
             class="about-close"
-            aria-label="Über mich schließen"
+            aria-label="Über Wild Project schließen"
           ><span class="about-close-glyph" aria-hidden="true">−</span></button>
         </div>
       </section>
 
-      <!-- PROJEKTE -->
+      <!-- PROJEKTE (ausgeblendet über SHOW_PROJECTS) -->
+      {SHOW_PROJECTS && (
       <section class="projects-section">
         <div class="projects-head">
           <span class="projects-eyebrow-line"></span>
@@ -118,6 +122,7 @@ import Footer from '../components/Footer.astro';
           <a class="project-link" href="https://www.shift2pro.com" target="_blank" rel="noopener">shift2pro.com <span class="project-arrow">&rarr;</span></a>
         </article>
       </section>
+      )}
 
     </div>
 
@@ -831,7 +836,7 @@ import Footer from '../components/Footer.astro';
       if (next === isOpen) return;
       isOpen = next;
       toggle.setAttribute('aria-expanded', String(isOpen));
-      toggle.setAttribute('aria-label', isOpen ? 'Über mich schließen' : 'Über mich öffnen');
+      toggle.setAttribute('aria-label', isOpen ? 'Über Wild Project schließen' : 'Über Wild Project öffnen');
       section.dataset.state = isOpen ? 'open' : 'closed';
 
       if (isOpen) {

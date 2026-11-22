@@ -1,5 +1,8 @@
 ---
 import TopicPage from '../components/TopicPage.astro';
+
+// Podcast-Kachel (Shift2Pro) vorerst ausgeblendet — zum Einschalten auf true setzen
+const SHOW_PODCAST = false;
 ---
 
 <TopicPage
@@ -9,7 +12,7 @@ import TopicPage from '../components/TopicPage.astro';
   headingEn="Hockey"
   intro="Spieler, Trainer und Nachwuchsprogramme entwickeln. Seit über 30 Jahren im Eishockey, als Spieler, Trainer und heute als Sportlicher Leiter im Nachwuchs-Eishockey."
   introEn="Developing players, coaches and youth programs. More than 30 years in hockey: as a player, as a coach and today as Head of Youth Hockey."
-  description="René Wild im Eishockey: Sportlicher Leiter Nachwuchs und Head Coach U17 der Starbulls Rosenheim, Trainerstationen, Arbeitsweise, Coaches-CV und der Podcast Shift2Pro."
+  description="René Wild im Eishockey: Sportlicher Leiter Nachwuchs und Head Coach U17 der Starbulls Rosenheim, Trainerstationen, Arbeitsweise und Coaches-CV."
 >
   <div slot="strip" class="tp-strip" aria-label="Fotos: René Wild als Coach" data-i18n-label="Photos: René Wild as a coach">
     <div class="tp-strip-track">
@@ -87,6 +90,7 @@ import TopicPage from '../components/TopicPage.astro';
     </div>
   </section>
 
+  {SHOW_PODCAST && (
   <section class="tp-section">
     <div class="tp-section-head">05 · Podcast</div>
     <a class="tp-card" href="https://www.shift2pro.com" target="_blank" rel="noopener">
@@ -95,6 +99,7 @@ import TopicPage from '../components/TopicPage.astro';
       <p class="tp-card-text" data-i18n-en="Hockey development, rethought — from learn-to-skate to the pros. Conversations with people who make things happen and want to pass it on.">Eishockey-Entwicklung neu gedacht — von der Laufschule bis zum Profi. Gespräche mit Menschen, die etwas bewegen und weitergeben wollen.</p>
     </a>
   </section>
+  )}
 </TopicPage>
 
 <style>
