@@ -36,18 +36,13 @@
   .footer {
     position: relative;
     z-index: 2;
-    margin-top: 40px;
-    padding: 0 3rem 26px;
-    background: #050505;
+    margin-top: 0;
+    padding: 60px 3rem 26px;
+    /* weicher Übergang statt harter Kante */
+    background: linear-gradient(to bottom, rgba(5,5,5,0) 0, #050505 220px);
     color: rgba(255,255,255,0.6);
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
     overflow: hidden;
-  }
-  .footer::before {
-    content: '';
-    display: block;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(252,80,0,0.6) 50%, transparent 100%);
   }
   /* zarter Glow hinter der Mail */
   .footer::after {
@@ -55,7 +50,8 @@
     position: absolute;
     left: 50%; top: 0;
     width: 900px; height: 420px;
-    transform: translate(-50%, -40%);
+    transform: translate(-50%, -20%);
+    opacity: 0.8;
     background: radial-gradient(closest-side, rgba(252,80,0,0.10), transparent 70%);
     pointer-events: none;
   }
@@ -131,7 +127,7 @@
   .ft-break { display: none; }
 
   @media (max-width: 860px) {
-    .footer { padding: 0 1.25rem 24px; }
+    .footer { padding: 40px 1.25rem 24px; }
     .ft-cta { padding: 48px 0 44px; }
     .ft-bottom { justify-content: center; text-align: center; gap: 2px 20px; }
     .ft-brand { order: 1; margin-right: 0; }

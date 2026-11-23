@@ -98,6 +98,33 @@ const SHOW_PROJECTS = false;
         </div>
       </section>
 
+      <!-- EISHOCKEY (Schwerpunkt) -->
+      <section class="hockey-section" aria-labelledby="hockey-heading">
+        <div class="projects-head">
+          <span class="projects-eyebrow-line"></span>
+          <span class="projects-eyebrow" id="hockey-heading" data-i18n-en="Hockey">Eishockey</span>
+          <span class="projects-eyebrow-line"></span>
+        </div>
+        <a class="hockey-card" href="/eishockey/">
+          <picture class="hockey-media">
+            <source media="(max-width: 700px)" srcset="/images/eishockey/banner-taktiktafel-mobil.jpg" />
+            <img src="/images/eishockey/banner-taktiktafel.jpg" alt="René Wild erklärt eine Übung am Taktikboard" data-i18n-alt="René Wild explaining a drill on the tactics board" width="1680" height="560" loading="lazy" />
+          </picture>
+          <div class="hockey-overlay">
+            <p class="hockey-tags" data-i18n-en="Youth · Structures · Concepts · Camps">Nachwuchs · Strukturen · Konzepte · Camps</p>
+            <p class="hockey-claim" data-i18n-en="Develop players. Develop coaches. Build structures that last.">Spieler entwickeln. Trainer entwickeln. Strukturen bauen, die tragen.</p>
+          </div>
+          <div class="hockey-body">
+            <dl class="hockey-stats">
+              <div><dt>30+</dt><dd data-i18n-en="years in hockey">Jahre im Eishockey</dd></div>
+              <div><dt>U7–U20</dt><dd data-i18n-en="youth in my charge">Nachwuchs in Verantwortung</dd></div>
+              <div><dt>2×A</dt><dd data-i18n-en="A licenses DE&nbsp;·&nbsp;AT">A-Lizenzen DE&nbsp;·&nbsp;AT</dd></div>
+            </dl>
+            <span class="project-link"><span data-i18n-en="More on hockey">Mehr zu Eishockey</span> <span class="project-arrow">&rarr;</span></span>
+          </div>
+        </a>
+      </section>
+
       <!-- PROJEKTE (ausgeblendet über SHOW_PROJECTS) -->
       {SHOW_PROJECTS && (
       <section class="projects-section">
@@ -612,6 +639,59 @@ const SHOW_PROJECTS = false;
   }
   .project-link:hover .project-arrow {
     transform: translateX(5px);
+  }
+  /* ── EISHOCKEY SECTION ───────────── */
+  .hockey-section { margin-top: 64px; text-align: center; }
+  .hockey-card {
+    display: block; position: relative; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.015);
+    color: inherit; text-decoration: none;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    opacity: 0; transform: translateY(20px);
+    animation: projectsFadeUp 1s ease 0.6s forwards;
+  }
+  .hockey-card:hover { border-color: rgba(252,80,0,0.35); background: rgba(252,80,0,0.025); }
+  .hockey-media { display: block; border-bottom: 1px solid rgba(252,80,0,0.35); }
+  .hockey-media img { display: block; width: 100%; height: auto; filter: grayscale(0.15); transition: transform 0.8s cubic-bezier(.2,.7,.2,1); }
+  .hockey-card:hover .hockey-media img { transform: scale(1.02); }
+  .hockey-body { padding: 26px 32px 30px; }
+  .hockey-overlay { padding: 28px 32px 0; }
+  .hockey-overlay .hockey-claim { margin-bottom: 0; }
+  @media (min-width: 701px) {
+    .hockey-media img { aspect-ratio: 2 / 1; object-fit: cover; object-position: 20% 40%; }
+  }
+  @media (max-width: 700px) {
+    .hockey-overlay { padding: 22px 18px 0; }
+  }
+  .hockey-tags {
+    margin: 0 0 14px;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange);
+  }
+  .hockey-claim {
+    margin: 0 auto 24px; max-width: 520px;
+    font-size: clamp(18px, 2.4vw, 22px); line-height: 1.4; font-weight: 500; color: var(--white);
+  }
+  .hockey-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    margin: 0 0 26px; padding: 18px 0;
+    border-top: 1px dashed rgba(255,255,255,0.1); border-bottom: 1px dashed rgba(255,255,255,0.1);
+  }
+  .hockey-stats dt { font-weight: 800; font-size: clamp(22px, 3.4vw, 30px); color: var(--orange); line-height: 1.1; }
+  .hockey-stats dd {
+    margin: 6px 0 0;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey-mid);
+  }
+  :global(body.light) .hockey-card { border-color: rgba(0,0,0,0.1); background: rgba(0,0,0,0.015); }
+  :global(body.light) .hockey-claim { color: #1a1a1a; }
+  :global(body.light) .hockey-stats { border-color: rgba(0,0,0,0.12); }
+  @media (max-width: 700px) {
+    .hockey-section { margin-top: 44px; }
+    .hockey-body { padding: 22px 18px 24px; }
+    .hockey-stats { gap: 6px; }
+    .hockey-stats dd { font-size: 8.5px; letter-spacing: 1px; }
   }
   @keyframes projectsFadeUp {
     to { opacity: 1; transform: translateY(0); }
